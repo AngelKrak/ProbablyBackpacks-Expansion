@@ -1,5 +1,7 @@
 # ProbablyBackpacks Expansion
 
+**English** | [Español](README.es.md)
+
 A configuration pack for **ProbablyBackpacks** that extends the default backpack progression to **21 backpack tiers**, featuring balanced crafting recipes and a fully integrated **DeluxeMenus** interface.
 
 > **Note**
@@ -10,9 +12,9 @@ A configuration pack for **ProbablyBackpacks** that extends the default backpack
 ## DeluxeMenus Interface
 Craft backpacks & upgrades directly from the GUI.
 
-![Backpacks](images/backpacks.jpg)
-![Backpacks Details](images/backpacks-details.jpg)
-![Upgrades](images/upgrades.jpg)
+![Backpacks](images/en/backpacks.jpg)
+![Backpacks Details](images/en/backpacks-details.jpg)
+![Upgrades](images/en/upgrades.jpg)
 
 ---
 
@@ -95,10 +97,20 @@ ProbablyBackpacks-Expansion/
 │   └── backpacks.yml
 
 └── DeluxeMenus/
-    ├── config.yml
-    ├── probablybackpacks_menu.yml
-    └── probablybackpacks_menu_page2.yml
+    ├── es/                     (Spanish GUI)
+    │   ├── config.yml
+    │   └── gui_menus/
+    │       ├── probablybackpacks_menu.yml
+    │       └── probablybackpacks_menu_page2.yml
+    │
+    └── en/                     (English GUI)
+        ├── config.yml
+        └── gui_menus/
+            ├── probablybackpacks_menu.yml
+            └── probablybackpacks_menu_page2.yml
 ```
+
+The `backpacks.yml` recipe file is shared by both languages — the backpack item names it defines (e.g. `Leather Backpack`) are always in English regardless of which DeluxeMenus GUI language you install, since ProbablyBackpacks uses them internally.
 
 ---
 
@@ -145,12 +157,14 @@ You can install it using:
 
 # Language
 
-The included DeluxeMenus interface is fully translated into **Spanish**.
+The included DeluxeMenus interface is available in **English** and **Spanish**, each in its own folder (`DeluxeMenus/en/` and `DeluxeMenus/es/`). Install only the folder matching your server's language — see [Installation](#installation) below.
 
-You are free to translate the menu files into any language by editing:
+The two versions are functionally identical: same recipes, same item requirements, same crafting logic. Only the GUI text (titles, lore, messages) differs.
 
-- probablybackpacks_menu.yml
-- probablybackpacks_menu_page2.yml
+You are free to translate the menu files into any other language by editing:
+
+- gui_menus/probablybackpacks_menu.yml
+- gui_menus/probablybackpacks_menu_page2.yml
 
 ---
 
@@ -178,7 +192,7 @@ with the file included in this repository.
 
 ## Step 3
 
-Copy the DeluxeMenus files.
+Choose **one** language folder — `DeluxeMenus/en/` or `DeluxeMenus/es/` — and copy its contents into your server's DeluxeMenus folder.
 
 ```
 plugins/DeluxeMenus/
@@ -190,7 +204,7 @@ gui_menus/probablybackpacks_menu.yml
 gui_menus/probablybackpacks_menu_page2.yml
 ```
 
-Replace existing files if necessary.
+Do not mix files from both language folders — each one is a complete, self-contained set. Replace existing files if necessary.
 
 ---
 
@@ -208,9 +222,19 @@ or simply restart the server.
 
 # Opening the Menu
 
-The included DeluxeMenus configuration registers commands that open the backpack menu.
+The included DeluxeMenus configuration registers commands that open the backpack menu. The aliases depend on which language folder you installed:
 
-Example commands include:
+**English (`DeluxeMenus/en/`)**
+
+```
+/backpacks
+
+/bps
+
+/bags
+```
+
+**Spanish (`DeluxeMenus/es/`)**
 
 ```
 /backpacks
@@ -300,138 +324,138 @@ Below are all crafting recipes included in this expansion:
 <table>
 <tr>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_cuero.webp">
-<img src="images/backpacks-crafting/Mochila_de_cuero.webp" alt="Leather Backpack">
+<a href="images/en/backpacks-crafting/Backpack_leather.png">
+<img src="images/en/backpacks-crafting/Backpack_leather.png" alt="Leather Backpack">
 </a>
 </td>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_cobre.webp">
-<img src="images/backpacks-crafting/Mochila_de_cobre.webp" alt="Copper Backpack">
-</a>
-</td>
-</tr>
-
-<tr>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_hierro.webp">
-<img src="images/backpacks-crafting/Mochila_de_hierro.webp" alt="Iron Backpack">
-</a>
-</td>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_oro.webp">
-<img src="images/backpacks-crafting/Mochila_de_oro.webp" alt="Gold Backpack">
+<a href="images/en/backpacks-crafting/Backpack_copper.png">
+<img src="images/en/backpacks-crafting/Backpack_copper.png" alt="Copper Backpack">
 </a>
 </td>
 </tr>
 
 <tr>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_diamante.webp">
-<img src="images/backpacks-crafting/Mochila_de_diamante.webp" alt="Diamond Backpack">
+<a href="images/en/backpacks-crafting/Backpack_iron.png">
+<img src="images/en/backpacks-crafting/Backpack_iron.png" alt="Iron Backpack">
 </a>
 </td>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_netherita.webp">
-<img src="images/backpacks-crafting/Mochila_de_netherita.webp" alt="Netherite Backpack">
-</a>
-</td>
-</tr>
-
-<tr>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_esmeralda.webp">
-<img src="images/backpacks-crafting/Mochila_de_esmeralda.webp" alt="Emerald Backpack">
-</a>
-</td>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_amatista.webp">
-<img src="images/backpacks-crafting/Mochila_de_amatista.webp" alt="Amethyst Backpack">
+<a href="images/en/backpacks-crafting/Backpack_gold.png">
+<img src="images/en/backpacks-crafting/Backpack_gold.png" alt="Gold Backpack">
 </a>
 </td>
 </tr>
 
 <tr>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_cuarzo.webp">
-<img src="images/backpacks-crafting/Mochila_de_cuarzo.webp" alt="Quartz Backpack">
+<a href="images/en/backpacks-crafting/Backpack_diamond.png">
+<img src="images/en/backpacks-crafting/Backpack_diamond.png" alt="Diamond Backpack">
 </a>
 </td>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_de_prismarina.webp">
-<img src="images/backpacks-crafting/Mochila_de_prismarina.webp" alt="Prismarine Backpack">
-</a>
-</td>
-</tr>
-
-<tr>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_echo.webp">
-<img src="images/backpacks-crafting/Mochila_echo.webp" alt="Echo Backpack">
-</a>
-</td>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_ender.webp">
-<img src="images/backpacks-crafting/Mochila_ender.webp" alt="Ender Backpack">
+<a href="images/en/backpacks-crafting/Backpack_netherite.png">
+<img src="images/en/backpacks-crafting/Backpack_netherite.png" alt="Netherite Backpack">
 </a>
 </td>
 </tr>
 
 <tr>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_dragon.webp">
-<img src="images/backpacks-crafting/Mochila_dragon.webp" alt="Dragon Backpack">
+<a href="images/en/backpacks-crafting/Backpack_emerald.png">
+<img src="images/en/backpacks-crafting/Backpack_emerald.png" alt="Emerald Backpack">
 </a>
 </td>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_faro.webp">
-<img src="images/backpacks-crafting/Mochila_faro.webp" alt="Beacon Backpack">
-</a>
-</td>
-</tr>
-
-<tr>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_ancestral.webp">
-<img src="images/backpacks-crafting/Mochila_ancestral.webp" alt="Ancient Backpack">
-</a>
-</td>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_maestra.webp">
-<img src="images/backpacks-crafting/Mochila_maestra.webp" alt="Master Backpack">
+<a href="images/en/backpacks-crafting/Backpack_amethyst.png">
+<img src="images/en/backpacks-crafting/Backpack_amethyst.png" alt="Amethyst Backpack">
 </a>
 </td>
 </tr>
 
 <tr>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_suprema.webp">
-<img src="images/backpacks-crafting/Mochila_suprema.webp" alt="Supreme Backpack">
+<a href="images/en/backpacks-crafting/Backpack_quartz.png">
+<img src="images/en/backpacks-crafting/Backpack_quartz.png" alt="Quartz Backpack">
 </a>
 </td>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_mitica.webp">
-<img src="images/backpacks-crafting/Mochila_mitica.webp" alt="Mythic Backpack">
-</a>
-</td>
-</tr>
-
-<tr>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_divina.webp">
-<img src="images/backpacks-crafting/Mochila_divina.webp" alt="Divine Backpack">
-</a>
-</td>
-<td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_infinita.webp">
-<img src="images/backpacks-crafting/Mochila_infinita.webp" alt="Infinite Backpack">
+<a href="images/en/backpacks-crafting/Backpack_prismarine.png">
+<img src="images/en/backpacks-crafting/Backpack_prismarine.png" alt="Prismarine Backpack">
 </a>
 </td>
 </tr>
 
 <tr>
 <td width="50%" align="center">
-<a href="images/backpacks-crafting/Mochila_definitiva.webp">
-<img src="images/backpacks-crafting/Mochila_definitiva.webp" alt="Ultimate Backpack">
+<a href="images/en/backpacks-crafting/Backpack_echo.png">
+<img src="images/en/backpacks-crafting/Backpack_echo.png" alt="Echo Backpack">
+</a>
+</td>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_ender.png">
+<img src="images/en/backpacks-crafting/Backpack_ender.png" alt="Ender Backpack">
+</a>
+</td>
+</tr>
+
+<tr>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_dragon.png">
+<img src="images/en/backpacks-crafting/Backpack_dragon.png" alt="Dragon Backpack">
+</a>
+</td>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_beacon.png">
+<img src="images/en/backpacks-crafting/Backpack_beacon.png" alt="Beacon Backpack">
+</a>
+</td>
+</tr>
+
+<tr>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_ancient.png">
+<img src="images/en/backpacks-crafting/Backpack_ancient.png" alt="Ancient Backpack">
+</a>
+</td>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_master.png">
+<img src="images/en/backpacks-crafting/Backpack_master.png" alt="Master Backpack">
+</a>
+</td>
+</tr>
+
+<tr>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_supreme.png">
+<img src="images/en/backpacks-crafting/Backpack_supreme.png" alt="Supreme Backpack">
+</a>
+</td>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_mythic.png">
+<img src="images/en/backpacks-crafting/Backpack_mythic.png" alt="Mythic Backpack">
+</a>
+</td>
+</tr>
+
+<tr>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_divine.png">
+<img src="images/en/backpacks-crafting/Backpack_divine.png" alt="Divine Backpack">
+</a>
+</td>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_infinite.png">
+<img src="images/en/backpacks-crafting/Backpack_infinite.png" alt="Infinite Backpack">
+</a>
+</td>
+</tr>
+
+<tr>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_ultimate.png">
+<img src="images/en/backpacks-crafting/Backpack_ultimate.png" alt="Ultimate Backpack">
 </a>
 </td>
 <td width="50%" align="center">
@@ -446,7 +470,7 @@ Below are all crafting recipes included in this expansion:
 
 # DeluxeMenus
 
-The included GUI is designed for Spanish-speaking servers and provides an intuitive interface so players can craft backpacks and upgrades without memorizing recipes.
+The included GUI is available in English and Spanish and provides an intuitive interface so players can craft backpacks and upgrades without memorizing recipes.
 
 - Backpack crafting
 - Backpack upgrades
@@ -496,7 +520,7 @@ or restart the server.
 
 ## Original Plugin
 
-- ProbablyBackpacks by Brothergaming52
+- ProbablyBackpacks by **Brothergaming52**
 
 ## Dependencies
 

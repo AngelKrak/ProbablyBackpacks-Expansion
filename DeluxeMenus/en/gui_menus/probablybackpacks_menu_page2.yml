@@ -1,0 +1,1257 @@
+menu_title: '&8🎒 &5Upgrades &7(&fPage 2/2&7)'
+size: 54
+
+items:
+  # ====================
+  # FILLER
+  # ====================
+  filler:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 0-53
+
+  # ====================
+  # HEADER SEPARATORS
+  # ====================
+  sep_header:
+    material: PURPLE_STAINED_GLASS_PANE
+    display_name: '&5&lUpgrades'
+    slots:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
+
+  # ====================
+  # INFO PANEL
+  # ====================
+  info:
+    material: NETHER_STAR
+    slot: 4
+    display_name: '&e&lUpgrade System'
+    lore:
+      - '&5Upgrades &8(rows 1-2)'
+      - '&8» &fBase &7· Crafting &7· Pickup'
+      - '&8» &fMagnet &7· Feeding &7· Restock'
+      - '&8» &fCompacting &7· Tool &7· Anvil'
+      - '&8» &fJukebox &7· Smithing &7· Smelting'
+      - '&8» &fBlast Furnace &7· Smoker'
+      - ''
+      - '&5Stack Upgrades &8(row 3)'
+      - '&8» &f5 tiers, each consumes the previous stack'
+      - ''
+      - '&e➜ Go back to page 1 to see the Backpacks'
+
+  # ====================
+  # ROW 2 SEPARATOR
+  # ====================
+  sep_row2:
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 23
+      - 24
+      - 25
+      - 26
+
+  # ====================
+  # ROW 3 SEPARATOR
+  # ====================
+  sep_row3:
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 32
+      - 33
+      - 34
+      - 35
+
+  # ====================
+  # UPGRADE BASE
+  # ====================
+  upgrade_base:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/upgrade_base
+    model_data_component:
+      floats: [200015]
+    slot: 9
+    display_name: '&6&lUpgrade Base'
+    lore:
+      - '&7Base component for most'
+      - '&7of the upgrades.'
+      - ''
+      - '&6You need'
+      - '&8» &fString &e%checkitem_amount_mat:STRING%&7/&e4'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fLeather &e%checkitem_amount_mat:LEATHER%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        string:
+          type: has item
+          material: STRING
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing String &8(&e%checkitem_amount_mat:STRING%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        leather:
+          type: has item
+          material: LEATHER
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing Leather'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% string 4'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% leather 1'
+      - '[player] cp give upgrade_base %player_name% 1'
+      - '[message] &aYou obtained an &6&lUpgrade Base&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # CRAFTING STATION
+  # ====================
+  crafting_station:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/crafting_station
+    model_data_component:
+      floats: [200001]
+    slot: 10
+    display_name: '&6&lCrafting Station'
+    lore:
+      - '&7Portable crafting table'
+      - '&7built into your backpack.'
+      - ''
+      - '&6You need'
+      - '&8» &fOak Planks &e%checkitem_amount_mat:OAK_PLANKS%&7/&e4'
+      - '&8» &fCrafting Table &e%checkitem_amount_mat:CRAFTING_TABLE%&7/&e2'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        planks:
+          type: has item
+          material: OAK_PLANKS
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Oak Planks &8(&e%checkitem_amount_mat:OAK_PLANKS%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        table:
+          type: has item
+          material: CRAFTING_TABLE
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Crafting Tables &8(&e%checkitem_amount_mat:CRAFTING_TABLE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% oak_planks 4'
+      - '[console] minecraft:clear %player_name% crafting_table 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give crafting_station %player_name% 1'
+      - '[message] &aYou obtained the &6&lCrafting Station&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # PICKUP UPGRADE
+  # ====================
+  pickup_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/pickup_upgrade
+    model_data_component:
+      floats: [200002]
+    slot: 11
+    display_name: '&6&lPickup Upgrade'
+    lore:
+      - '&7Automatically picks up items'
+      - '&7from the ground into the backpack.'
+      - ''
+      - '&6You need'
+      - '&8» &fPiston &e%checkitem_amount_mat:PISTON%&7/&e1'
+      - '&8» &fString &e%checkitem_amount_mat:STRING%&7/&e2'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e3'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        piston:
+          type: has item
+          material: PISTON
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Piston'
+            - '[sound] ENTITY_VILLAGER_NO'
+        string:
+          type: has item
+          material: STRING
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing String &8(&e%checkitem_amount_mat:STRING%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 3
+          deny_commands:
+            - '[message] &cMissing Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e3&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% piston 1'
+      - '[console] minecraft:clear %player_name% string 2'
+      - '[console] minecraft:clear %player_name% redstone 3'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give pickup_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lPickup Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # MAGNET UPGRADE
+  # ====================
+  magnet_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/magnet_upgrade
+    model_data_component:
+      floats: [200003]
+    slot: 12
+    display_name: '&6&lMagnet Upgrade'
+    lore:
+      - '&7Pulls nearby items directly'
+      - '&7into the backpack. Requires the Pickup Upgrade.'
+      - ''
+      - '&6You need'
+      - '&8» &fEnder Pearl &e%checkitem_amount_mat:ENDER_PEARL%&7/&e2'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e1'
+      - '&8» &fDiamond &e%checkitem_amount_mat:DIAMOND%&7/&e1'
+      - '&8» &fLapis Lazuli &e%checkitem_amount_mat:LAPIS_LAZULI%&7/&e1'
+      - '&8» &fPickup Upgrade &e%checkitem_amount_namecontains:Pickup Upgrade%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        pearl:
+          type: has item
+          material: ENDER_PEARL
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Ender Pearls &8(&e%checkitem_amount_mat:ENDER_PEARL%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing Redstone'
+            - '[sound] ENTITY_VILLAGER_NO'
+        diamond:
+          type: has item
+          material: DIAMOND
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Diamond'
+            - '[sound] ENTITY_VILLAGER_NO'
+        lapis:
+          type: has item
+          material: LAPIS_LAZULI
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Lapis Lazuli'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Pickup Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Pickup Upgrade'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ender_pearl 2'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 1'
+      - '[console] minecraft:clear %player_name% diamond 1'
+      - '[console] minecraft:clear %player_name% lapis_lazuli 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"pickup_upgrade"}}] 1'
+      - '[player] cp give magnet_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lMagnet Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # FEEDING UPGRADE
+  # ====================
+  feeding_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/feeding_upgrade
+    model_data_component:
+      floats: [200004]
+    slot: 13
+    display_name: '&6&lFeeding Upgrade'
+    lore:
+      - '&7Automatically eats food'
+      - '&7stored in the backpack.'
+      - ''
+      - '&6You need'
+      - '&8» &fGolden Carrot &e%checkitem_amount_mat:GOLDEN_CARROT%&7/&e1'
+      - '&8» &fGolden Apple &e%checkitem_amount_mat:GOLDEN_APPLE%&7/&e1'
+      - '&8» &fGlistering Melon Slice &e%checkitem_amount_mat:GLISTERING_MELON_SLICE%&7/&e1'
+      - '&8» &fEnder Pearl &e%checkitem_amount_mat:ENDER_PEARL%&7/&e1'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        carrot:
+          type: has item
+          material: GOLDEN_CARROT
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Golden Carrot'
+            - '[sound] ENTITY_VILLAGER_NO'
+        apple:
+          type: has item
+          material: GOLDEN_APPLE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Golden Apple'
+            - '[sound] ENTITY_VILLAGER_NO'
+        melon:
+          type: has item
+          material: GLISTERING_MELON_SLICE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Glistering Melon Slice'
+            - '[sound] ENTITY_VILLAGER_NO'
+        pearl:
+          type: has item
+          material: ENDER_PEARL
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Ender Pearl'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% golden_carrot 1'
+      - '[console] minecraft:clear %player_name% golden_apple 1'
+      - '[console] minecraft:clear %player_name% glistering_melon_slice 1'
+      - '[console] minecraft:clear %player_name% ender_pearl 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give feeding_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lFeeding Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # REFILL UPGRADE
+  # ====================
+  refill_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/refill_upgrade
+    model_data_component:
+      floats: [200005]
+    slot: 14
+    display_name: '&6&lRefill Upgrade'
+    lore:
+      - '&7Automatically restocks the hotbar'
+      - '&7from the backpack.'
+      - ''
+      - '&6You need'
+      - '&8» &fEnder Pearl &e%checkitem_amount_mat:ENDER_PEARL%&7/&e1'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e2'
+      - '&8» &fChest &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        pearl:
+          type: has item
+          material: ENDER_PEARL
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Ender Pearl'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        chest:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Chest'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ender_pearl 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% redstone 2'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give refill_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lRefill Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # COMPACTING UPGRADE
+  # ====================
+  compacting_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/compacting_upgrade
+    model_data_component:
+      floats: [200006]
+    slot: 15
+    display_name: '&6&lCompacting Upgrade'
+    lore:
+      - '&7Automatically compresses items'
+      - '&7into their block forms.'
+      - ''
+      - '&6You need'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fPiston &e%checkitem_amount_mat:PISTON%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e2'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        piston:
+          type: has item
+          material: PISTON
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Pistons &8(&e%checkitem_amount_mat:PISTON%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% piston 4'
+      - '[console] minecraft:clear %player_name% redstone 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give compacting_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lCompacting Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # TOOL SWAPPER
+  # ====================
+  tool_swapper:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/tool_swapper
+    model_data_component:
+      floats: [200014]
+    slot: 16
+    display_name: '&6&lTool Swapper'
+    lore:
+      - '&7Automatically switches to the best'
+      - '&7tool while mining.'
+      - ''
+      - '&6You need'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e2'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fWooden Shovel &e%checkitem_amount_mat:WOODEN_SHOVEL%&7/&e1'
+      - '&8» &fWooden Sword &e%checkitem_amount_mat:WOODEN_SWORD%&7/&e1'
+      - '&8» &fWooden Pickaxe &e%checkitem_amount_mat:WOODEN_PICKAXE%&7/&e1'
+      - '&8» &fWooden Axe &e%checkitem_amount_mat:WOODEN_AXE%&7/&e1'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        shovel:
+          type: has item
+          material: WOODEN_SHOVEL
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Wooden Shovel'
+            - '[sound] ENTITY_VILLAGER_NO'
+        sword:
+          type: has item
+          material: WOODEN_SWORD
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Wooden Sword'
+            - '[sound] ENTITY_VILLAGER_NO'
+        pickaxe:
+          type: has item
+          material: WOODEN_PICKAXE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Wooden Pickaxe'
+            - '[sound] ENTITY_VILLAGER_NO'
+        axe:
+          type: has item
+          material: WOODEN_AXE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Wooden Axe'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% redstone 2'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% wooden_shovel 1'
+      - '[console] minecraft:clear %player_name% wooden_sword 1'
+      - '[console] minecraft:clear %player_name% wooden_pickaxe 1'
+      - '[console] minecraft:clear %player_name% wooden_axe 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give tool_swapper %player_name% 1'
+      - '[message] &aYou obtained the &6&lTool Swapper&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # ANVIL UPGRADE
+  # ====================
+  anvil_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/anvil_upgrade
+    model_data_component:
+      floats: [200008]
+    slot: 17
+    display_name: '&6&lAnvil Upgrade'
+    lore:
+      - '&7Portable anvil built'
+      - '&7into your backpack.'
+      - ''
+      - '&6You need'
+      - '&8» &fAnvil &e%checkitem_amount_mat:ANVIL%&7/&e2'
+      - '&8» &fDiamond &e%checkitem_amount_mat:DIAMOND%&7/&e1'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fChest &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        anvil:
+          type: has item
+          material: ANVIL
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Anvils &8(&e%checkitem_amount_mat:ANVIL%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        diamond:
+          type: has item
+          material: DIAMOND
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Diamond'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        chest:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Chest'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% anvil 2'
+      - '[console] minecraft:clear %player_name% diamond 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give anvil_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lAnvil Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # JUKEBOX UPGRADE
+  # ====================
+  jukebox_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/jukebox_upgrade
+    model_data_component:
+      floats: [200010]
+    slot: 18
+    display_name: '&6&lJukebox Upgrade'
+    lore:
+      - '&7Plays music discs'
+      - '&7from your backpack GUI.'
+      - ''
+      - '&6You need'
+      - '&8» &fJukebox &e%checkitem_amount_mat:JUKEBOX%&7/&e1'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e1'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        jukebox:
+          type: has item
+          material: JUKEBOX
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Jukebox'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing Redstone'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% jukebox 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% redstone 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give jukebox_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lJukebox Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # SMITHING UPGRADE
+  # ====================
+  smithing_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/smithing_upgrade
+    model_data_component:
+      floats: [200012]
+    slot: 19
+    display_name: '&6&lSmithing Upgrade'
+    lore:
+      - '&7Portable smithing table'
+      - '&7built into your backpack.'
+      - ''
+      - '&6You need'
+      - '&8» &fSmithing Table &e%checkitem_amount_mat:SMITHING_TABLE%&7/&e1'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fChest &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        table:
+          type: has item
+          material: SMITHING_TABLE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Smithing Table'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        chest:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Chest'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% smithing_table 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give smithing_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lSmithing Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # SMELTING UPGRADE
+  # ====================
+  smelting_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/smelting_upgrade
+    model_data_component:
+      floats: [200011]
+    slot: 20
+    display_name: '&6&lSmelting Upgrade'
+    lore:
+      - '&7Automatically smelts items'
+      - '&7while you explore.'
+      - ''
+      - '&6You need'
+      - '&8» &fFurnace &e%checkitem_amount_mat:FURNACE%&7/&e1'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e4'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        furnace:
+          type: has item
+          material: FURNACE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Furnace'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% furnace 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give smelting_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lSmelting Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # BLASTING UPGRADE
+  # ====================
+  blasting_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/blasting_upgrade
+    model_data_component:
+      floats: [200009]
+    slot: 21
+    display_name: '&6&lBlasting Upgrade'
+    lore:
+      - '&7Fast smelting of ores'
+      - '&7and materials.'
+      - ''
+      - '&6You need'
+      - '&8» &fBlast Furnace &e%checkitem_amount_mat:BLAST_FURNACE%&7/&e1'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e4'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        blast_furnace:
+          type: has item
+          material: BLAST_FURNACE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Blast Furnace'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% blast_furnace 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give blasting_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lBlasting Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # SMOKER UPGRADE
+  # ====================
+  smoker_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/smoking_upgrade
+    model_data_component:
+      floats: [200013]
+    slot: 22
+    display_name: '&6&lSmoker Upgrade'
+    lore:
+      - '&7Cooks food quickly'
+      - '&7while you move around.'
+      - ''
+      - '&6You need'
+      - '&8» &fSmoker &e%checkitem_amount_mat:SMOKER%&7/&e1'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e4'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        smoker:
+          type: has item
+          material: SMOKER
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Smoker'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% smoker 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give smoker_upgrade %player_name% 1'
+      - '[message] &aYou obtained the &6&lSmoker Upgrade&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - COPPER
+  # ====================
+  stack_upgrade_0:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_0
+    model_data_component:
+      floats: [200016]
+    slot: 27
+    display_name: '&c&lStack Upgrade: Copper'
+    lore:
+      - '&7Increases the backpack''s'
+      - '&7max stack size to &e96&7.'
+      - ''
+      - '&6You need'
+      - '&8» &fCopper Block &e%checkitem_amount_mat:COPPER_BLOCK%&7/&e8'
+      - '&8» &fUpgrade Base &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        copper:
+          type: has item
+          material: COPPER_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Copper Blocks &8(&e%checkitem_amount_mat:COPPER_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Upgrade Base'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% copper_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give stack_upgrade_0 %player_name% 1'
+      - '[message] &aYou obtained the &c&lStack Upgrade: Copper&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - IRON
+  # ====================
+  stack_upgrade_1:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_1
+    model_data_component:
+      floats: [200007]
+    slot: 28
+    display_name: '&f&lStack Upgrade: Iron'
+    lore:
+      - '&7Increases the backpack''s'
+      - '&7max stack size to &e128&7.'
+      - ''
+      - '&6You need'
+      - '&8» &fIron Block &e%checkitem_amount_mat:IRON_BLOCK%&7/&e8'
+      - '&8» &fCopper Stack Upgrade &e%checkitem_amount_namecontains:Copper Stack Upgrade%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        iron:
+          type: has item
+          material: IRON_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Iron Blocks &8(&e%checkitem_amount_mat:IRON_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_copper:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Copper Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Copper Stack Upgrade'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% iron_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_0"}}] 1'
+      - '[player] cp give stack_upgrade_1 %player_name% 1'
+      - '[message] &aYou obtained the &f&lStack Upgrade: Iron&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - GOLD
+  # ====================
+  stack_upgrade_2:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_2
+    model_data_component:
+      floats: [200017]
+    slot: 29
+    display_name: '&6&lStack Upgrade: Gold'
+    lore:
+      - '&7Increases the backpack''s'
+      - '&7max stack size to &e256&7.'
+      - ''
+      - '&6You need'
+      - '&8» &fGold Block &e%checkitem_amount_mat:GOLD_BLOCK%&7/&e8'
+      - '&8» &fIron Stack Upgrade &e%checkitem_amount_namecontains:Iron Stack Upgrade%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        gold:
+          type: has item
+          material: GOLD_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Gold Blocks &8(&e%checkitem_amount_mat:GOLD_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_iron:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Iron Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Iron Stack Upgrade'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% gold_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_1"}}] 1'
+      - '[player] cp give stack_upgrade_2 %player_name% 1'
+      - '[message] &aYou obtained the &6&lStack Upgrade: Gold&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - DIAMOND
+  # ====================
+  stack_upgrade_3:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_3
+    model_data_component:
+      floats: [200018]
+    slot: 30
+    display_name: '&b&lStack Upgrade: Diamond'
+    lore:
+      - '&7Increases the backpack''s'
+      - '&7max stack size to &e512&7.'
+      - ''
+      - '&6You need'
+      - '&8» &fDiamond Block &e%checkitem_amount_mat:DIAMOND_BLOCK%&7/&e8'
+      - '&8» &fGold Stack Upgrade &e%checkitem_amount_namecontains:Gold Stack Upgrade%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        diamond:
+          type: has item
+          material: DIAMOND_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Diamond Blocks &8(&e%checkitem_amount_mat:DIAMOND_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_gold:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Gold Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Gold Stack Upgrade'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% diamond_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_2"}}] 1'
+      - '[player] cp give stack_upgrade_3 %player_name% 1'
+      - '[message] &aYou obtained the &b&lStack Upgrade: Diamond&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - NETHERITE
+  # ====================
+  stack_upgrade_4:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_4
+    model_data_component:
+      floats: [200019]
+    slot: 31
+    display_name: '&5&lStack Upgrade: Netherite'
+    lore:
+      - '&7Increases the backpack''s'
+      - '&7max stack size to &e1024&7.'
+      - ''
+      - '&6You need'
+      - '&8» &fNetherite Block &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e8'
+      - '&8» &fDiamond Stack Upgrade &e%checkitem_amount_namecontains:Diamond Stack Upgrade%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        netherite:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Netherite Blocks &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_diamond:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Diamond Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Diamond Stack Upgrade'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_3"}}] 1'
+      - '[player] cp give stack_upgrade_4 %player_name% 1'
+      - '[message] &aYou obtained the &5&lStack Upgrade: Netherite&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # PREVIOUS PAGE
+  # ====================
+  prev_page:
+    material: ARROW
+    slot: 45
+    display_name: '&a&l◀ Page 1: Backpacks'
+    lore:
+      - '&7View the backpacks'
+      - '&7available to craft.'
+      - ''
+      - '&aClick to go back'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[openguimenu] probablybackpacks_menu'
+
+  # ====================
+  # UPGRADE MATERIALS PANEL
+  # ====================
+  panel_mat_upgrades:
+    material: CHEST
+    slot: 53
+    display_name: '&5Upgrade Materials'
+    lore:
+      - '&8» &fString: &e%checkitem_amount_mat:STRING%'
+      - '&8» &fLeather: &e%checkitem_amount_mat:LEATHER%'
+      - '&8» &fIron Ingot: &e%checkitem_amount_mat:IRON_INGOT%'
+      - '&8» &fRedstone: &e%checkitem_amount_mat:REDSTONE%'
+      - '&8» &fPiston: &e%checkitem_amount_mat:PISTON%'
+      - '&8» &fEnder Pearl: &e%checkitem_amount_mat:ENDER_PEARL%'
+      - '&8» &fDiamond: &e%checkitem_amount_mat:DIAMOND%'
+      - '&8» &fUpgrade Base: &e%checkitem_amount_namecontains:Upgrade Base%'
+      - '&8» &fCopper Block: &e%checkitem_amount_mat:COPPER_BLOCK%'
+      - '&8» &fIron Block: &e%checkitem_amount_mat:IRON_BLOCK%'
+      - '&8» &fGold Block: &e%checkitem_amount_mat:GOLD_BLOCK%'
+      - '&8» &fDiamond Block: &e%checkitem_amount_mat:DIAMOND_BLOCK%'
+      - '&8» &fNetherite Block: &e%checkitem_amount_mat:NETHERITE_BLOCK%'
+      - ''
+      - '&eClick to refresh'
+    left_click_commands:
+      - '[refresh]'

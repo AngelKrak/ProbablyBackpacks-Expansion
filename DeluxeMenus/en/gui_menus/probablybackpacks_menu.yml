@@ -1,0 +1,1308 @@
+menu_title: '&8🎒 &6Backpacks &7(&fPage 1/2&7)'
+open_command:
+  - backpacks
+  - bps
+  - bags
+size: 54
+register_command: true
+command_description: 'Opens the backpack and upgrade shop.'
+command_usage: '/backpacks'
+command_permission: 'deluxemenus.menu.backpacks'
+
+items:
+  # ====================
+  # FILLER
+  # ====================
+  filler:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 0-53
+
+  # ====================
+  # HEADER SEPARATORS
+  # ====================
+  sep_header:
+    material: ORANGE_STAINED_GLASS_PANE
+    display_name: '&6&lBackpacks'
+    slots:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
+
+  # ====================
+  # INFO PANEL
+  # ====================
+  info:
+    material: NETHER_STAR
+    slot: 4
+    display_name: '&e&lBackpack System'
+    lore:
+      - '&6Backpacks &8(21 tiers)'
+      - '&8» &fLeather &7· Copper &7· Iron &7· Gold'
+      - '&8» &fDiamond &7· Netherite &7· Emerald'
+      - '&8» &fAmethyst &7· Quartz &7· Prismarine'
+      - '&8» &fEcho &7· Ender &7· Dragon &7· Beacon'
+      - '&8» &fAncient &7· Master &7· Supreme'
+      - '&8» &fMythic &7· Divine &7· Infinity &7· Ultimate'
+      - '&7Each upgrade consumes the previous backpack.'
+      - ''
+      - '&e➜ Go to page 2 to see the Upgrades'
+
+  # ====================
+  # ROW 3 SEPARATOR (centers the last 3 backpacks)
+  # ====================
+  sep_row3:
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 27
+      - 28
+      - 29
+      - 33
+      - 34
+      - 35
+
+  # ====================
+  # LEATHER BACKPACK
+  # ====================
+  leather_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/leather/base
+    model_data_component:
+      floats: [100001]
+    slot: 9
+    display_name: '&e&lLeather Backpack'
+    lore:
+      - '&7Tier 1 &8· &e27 slots &8· &b1 upgrade &8· &d1 page'
+      - ''
+      - '&6You need'
+      - '&8» &fString &e%checkitem_amount_mat:STRING%&7/&e4'
+      - '&8» &fLeather &e%checkitem_amount_mat:LEATHER%&7/&e4'
+      - '&8» &fChest &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        string:
+          type: has item
+          material: STRING
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing String &8(&e%checkitem_amount_mat:STRING%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        leather:
+          type: has item
+          material: LEATHER
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Leather &8(&e%checkitem_amount_mat:LEATHER%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        chest:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing a Chest'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% string 4'
+      - '[console] minecraft:clear %player_name% leather 4'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[player] cp give leather_backpack %player_name% 1'
+      - '[message] &aYou obtained the &e&lLeather Backpack&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # COPPER BACKPACK
+  # ====================
+  copper_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/copper/base
+    model_data_component:
+      floats: [100002]
+    slot: 10
+    display_name: '&c&lCopper Backpack'
+    lore:
+      - '&7Tier 2 &8· &e45 slots &8· &b2 upgrades &8· &d1 page'
+      - ''
+      - '&6You need'
+      - '&8» &fCopper Ingot &e%checkitem_amount_mat:COPPER_INGOT%&7/&e8'
+      - '&8» &fLeather Backpack &e%checkitem_amount_namecontains:Leather Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        copper:
+          type: has item
+          material: COPPER_INGOT
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Copper Ingots &8(&e%checkitem_amount_mat:COPPER_INGOT%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        leather_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Leather Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Leather Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% copper_ingot 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"leather_backpack"}}] 1'
+      - '[player] cp give copper_backpack %player_name% 1'
+      - '[message] &aYou obtained the &c&lCopper Backpack&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # IRON BACKPACK
+  # ====================
+  iron_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/iron/base
+    model_data_component:
+      floats: [100003]
+    slot: 11
+    display_name: '&f&lIron Backpack'
+    lore:
+      - '&7Tier 3 &8· &e54 slots &8· &b3 upgrades &8· &d2 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fIron Ingot &e%checkitem_amount_mat:IRON_INGOT%&7/&e8'
+      - '&8» &fCopper Backpack &e%checkitem_amount_namecontains:Copper Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        iron:
+          type: has item
+          material: IRON_INGOT
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Iron Ingots &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        copper_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Copper Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Copper Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% iron_ingot 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"copper_backpack"}}] 1'
+      - '[player] cp give iron_backpack %player_name% 1'
+      - '[message] &aYou obtained the &f&lIron Backpack&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # GOLD BACKPACK
+  # ====================
+  gold_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/gold/base
+    model_data_component:
+      floats: [100004]
+    slot: 12
+    display_name: '&6&lGold Backpack'
+    lore:
+      - '&7Tier 4 &8· &e81 slots &8· &b4 upgrades &8· &d2 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fGold Ingot &e%checkitem_amount_mat:GOLD_INGOT%&7/&e8'
+      - '&8» &fIron Backpack &e%checkitem_amount_namecontains:Iron Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        gold:
+          type: has item
+          material: GOLD_INGOT
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Gold Ingots &8(&e%checkitem_amount_mat:GOLD_INGOT%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        iron_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Iron Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Iron Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% gold_ingot 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"iron_backpack"}}] 1'
+      - '[player] cp give gold_backpack %player_name% 1'
+      - '[message] &aYou obtained the &6&lGold Backpack&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # DIAMOND BACKPACK
+  # ====================
+  diamond_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/diamond/base
+    model_data_component:
+      floats: [100005]
+    slot: 13
+    display_name: '&b&lDiamond Backpack'
+    lore:
+      - '&7Tier 5 &8· &e108 slots &8· &b5 upgrades &8· &d3 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fDiamond &e%checkitem_amount_mat:DIAMOND%&7/&e8'
+      - '&8» &fGold Backpack &e%checkitem_amount_namecontains:Gold Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        diamond:
+          type: has item
+          material: DIAMOND
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Diamonds &8(&e%checkitem_amount_mat:DIAMOND%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        gold_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Gold Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Gold Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% diamond 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"gold_backpack"}}] 1'
+      - '[player] cp give diamond_backpack %player_name% 1'
+      - '[message] &aYou obtained the &b&lDiamond Backpack&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # NETHERITE BACKPACK
+  # ====================
+  netherite_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/base
+    model_data_component:
+      floats: [100006]
+    slot: 14
+    display_name: '&5&lNetherite Backpack'
+    lore:
+      - '&7Tier 6 &8· &e126 slots &8· &b6 upgrades &8· &d3 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fNetherite Ingot &e%checkitem_amount_mat:NETHERITE_INGOT%&7/&e1'
+      - '&8» &fNetherite Upgrade Template &e%checkitem_amount_mat:NETHERITE_UPGRADE_SMITHING_TEMPLATE%&7/&e1'
+      - '&8» &fDiamond Backpack &e%checkitem_amount_namecontains:Diamond Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        netherite:
+          type: has item
+          material: NETHERITE_INGOT
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Netherite Ingot'
+            - '[sound] ENTITY_VILLAGER_NO'
+        template:
+          type: has item
+          material: NETHERITE_UPGRADE_SMITHING_TEMPLATE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Netherite Upgrade Template'
+            - '[sound] ENTITY_VILLAGER_NO'
+        diamond_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Diamond Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Diamond Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_ingot 1'
+      - '[console] minecraft:clear %player_name% netherite_upgrade_smithing_template 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"diamond_backpack"}}] 1'
+      - '[player] cp give netherite_backpack %player_name% 1'
+      - '[message] &aYou obtained the &5&lNetherite Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # EMERALD BACKPACK
+  # ====================
+  emerald_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/legacy/netherite/green
+    model_data_component:
+      floats: [100606]
+    slot: 15
+    display_name: '&a&lEmerald Backpack'
+    lore:
+      - '&7Tier 7 &8· &e144 slots &8· &b7 upgrades &8· &d4 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fEmeralds &e%checkitem_amount_mat:EMERALD%&7/&e8'
+      - '&8» &fNetherite Backpack &e%checkitem_amount_namecontains:Netherite Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        emerald:
+          type: has item
+          material: EMERALD
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Emeralds &8(&e%checkitem_amount_mat:EMERALD%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        netherite_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Netherite Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Netherite Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% emerald 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"netherite_backpack"}}] 1'
+      - '[player] cp give emerald_backpack %player_name% 1'
+      - '[message] &aYou obtained the &a&lEmerald Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # AMETHYST BACKPACK
+  # ====================
+  amethyst_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/purple
+    model_data_component:
+      floats: [101306]
+    slot: 16
+    display_name: '&d&lAmethyst Backpack'
+    lore:
+      - '&7Tier 8 &8· &e162 slots &8· &b7 upgrades &8· &d4 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fAmethyst Shard &e%checkitem_amount_mat:AMETHYST_SHARD%&7/&e8'
+      - '&8» &fEmerald Backpack &e%checkitem_amount_namecontains:Emerald Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        amethyst:
+          type: has item
+          material: AMETHYST_SHARD
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Amethyst Shards &8(&e%checkitem_amount_mat:AMETHYST_SHARD%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        emerald_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Emerald Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Emerald Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% amethyst_shard 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"emerald_backpack"}}] 1'
+      - '[player] cp give amethyst_backpack %player_name% 1'
+      - '[message] &aYou obtained the &d&lAmethyst Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # QUARTZ BACKPACK
+  # ====================
+  quartz_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/white
+    model_data_component:
+      floats: [101506]
+    slot: 17
+    display_name: '&f&lQuartz Backpack'
+    lore:
+      - '&7Tier 9 &8· &e180 slots &8· &b7 upgrades &8· &d4 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fNether Quartz &e%checkitem_amount_mat:QUARTZ%&7/&e8'
+      - '&8» &fAmethyst Backpack &e%checkitem_amount_namecontains:Amethyst Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        quartz:
+          type: has item
+          material: QUARTZ
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Quartz &8(&e%checkitem_amount_mat:QUARTZ%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        amethyst_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Amethyst Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Amethyst Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% quartz 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"amethyst_backpack"}}] 1'
+      - '[player] cp give quartz_backpack %player_name% 1'
+      - '[message] &aYou obtained the &f&lQuartz Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # PRISMARINE BACKPACK
+  # ====================
+  prismarine_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/lime
+    model_data_component:
+      floats: [100906]
+    slot: 18
+    display_name: '&3&lPrismarine Backpack'
+    lore:
+      - '&7Tier 10 &8· &e198 slots &8· &b8 upgrades &8· &d5 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fPrismarine Crystals &e%checkitem_amount_mat:PRISMARINE_CRYSTALS%&7/&e8'
+      - '&8» &fQuartz Backpack &e%checkitem_amount_namecontains:Quartz Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        prismarine:
+          type: has item
+          material: PRISMARINE_CRYSTALS
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Prismarine Crystals &8(&e%checkitem_amount_mat:PRISMARINE_CRYSTALS%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        quartz_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Quartz Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Quartz Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% prismarine_crystals 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"quartz_backpack"}}] 1'
+      - '[player] cp give prismarine_backpack %player_name% 1'
+      - '[message] &aYou obtained the &3&lPrismarine Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # ECHO BACKPACK
+  # ====================
+  echo_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/green
+    model_data_component:
+      floats: [100606]
+    slot: 19
+    display_name: '&9&lEcho Backpack'
+    lore:
+      - '&7Tier 11 &8· &e216 slots &8· &b8 upgrades &8· &d5 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fEcho Shard &e%checkitem_amount_mat:ECHO_SHARD%&7/&e4'
+      - '&8» &fSculk Catalyst &e%checkitem_amount_mat:SCULK_CATALYST%&7/&e1'
+      - '&8» &fRecovery Compass &e%checkitem_amount_mat:RECOVERY_COMPASS%&7/&e2'
+      - '&8» &fSculk Shrieker &e%checkitem_amount_mat:SCULK_SHRIEKER%&7/&e1'
+      - '&8» &fPrismarine Backpack &e%checkitem_amount_namecontains:Prismarine Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        echo:
+          type: has item
+          material: ECHO_SHARD
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Echo Shards &8(&e%checkitem_amount_mat:ECHO_SHARD%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        catalyst:
+          type: has item
+          material: SCULK_CATALYST
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Sculk Catalyst'
+            - '[sound] ENTITY_VILLAGER_NO'
+        compass:
+          type: has item
+          material: RECOVERY_COMPASS
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Recovery Compasses &8(&e%checkitem_amount_mat:RECOVERY_COMPASS%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        shrieker:
+          type: has item
+          material: SCULK_SHRIEKER
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Sculk Shrieker'
+            - '[sound] ENTITY_VILLAGER_NO'
+        prismarine_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Prismarine Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Prismarine Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% echo_shard 4'
+      - '[console] minecraft:clear %player_name% sculk_catalyst 1'
+      - '[console] minecraft:clear %player_name% recovery_compass 2'
+      - '[console] minecraft:clear %player_name% sculk_shrieker 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"prismarine_backpack"}}] 1'
+      - '[player] cp give echo_backpack %player_name% 1'
+      - '[message] &aYou obtained the &9&lEcho Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # ENDER BACKPACK
+  # ====================
+  ender_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    model_data_component:
+      floats: [100106]
+    slot: 20
+    display_name: '&5&lEnder Backpack'
+    lore:
+      - '&7Tier 12 &8· &e243 slots &8· &b8 upgrades &8· &d6 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fEnder Eye &e%checkitem_amount_mat:ENDER_EYE%&7/&e4'
+      - '&8» &fEnder Chest &e%checkitem_amount_mat:ENDER_CHEST%&7/&e4'
+      - '&8» &fEcho Backpack &e%checkitem_amount_namecontains:Echo Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        eye:
+          type: has item
+          material: ENDER_EYE
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Ender Eyes &8(&e%checkitem_amount_mat:ENDER_EYE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        ender_chest:
+          type: has item
+          material: ENDER_CHEST
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Ender Chests &8(&e%checkitem_amount_mat:ENDER_CHEST%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        echo_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Echo Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Echo Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ender_eye 4'
+      - '[console] minecraft:clear %player_name% ender_chest 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"echo_backpack"}}] 1'
+      - '[player] cp give ender_backpack %player_name% 1'
+      - '[message] &aYou obtained the &5&lEnder Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # DRAGON BACKPACK
+  # ====================
+  dragon_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    model_data_component:
+      floats: [100106]
+    slot: 21
+    display_name: '&5&lDragon Backpack'
+    lore:
+      - '&7Tier 13 &8· &e270 slots &8· &b9 upgrades &8· &d6 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fDragon Breath &e%checkitem_amount_mat:DRAGON_BREATH%&7/&e4'
+      - '&8» &fDragon Head &e%checkitem_amount_mat:DRAGON_HEAD%&7/&e1'
+      - '&8» &fEnd Crystal &e%checkitem_amount_mat:END_CRYSTAL%&7/&e2'
+      - '&8» &fElytra &e%checkitem_amount_mat:ELYTRA%&7/&e1'
+      - '&8» &fEnder Backpack &e%checkitem_amount_namecontains:Ender Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        breath:
+          type: has item
+          material: DRAGON_BREATH
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Dragon Breath &8(&e%checkitem_amount_mat:DRAGON_BREATH%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        head:
+          type: has item
+          material: DRAGON_HEAD
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Dragon Head'
+            - '[sound] ENTITY_VILLAGER_NO'
+        crystal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing End Crystals &8(&e%checkitem_amount_mat:END_CRYSTAL%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        elytra:
+          type: has item
+          material: ELYTRA
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing Elytra'
+            - '[sound] ENTITY_VILLAGER_NO'
+        ender_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Ender Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Ender Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% dragon_breath 4'
+      - '[console] minecraft:clear %player_name% dragon_head 1'
+      - '[console] minecraft:clear %player_name% end_crystal 2'
+      - '[console] minecraft:clear %player_name% elytra 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"ender_backpack"}}] 1'
+      - '[player] cp give dragon_backpack %player_name% 1'
+      - '[message] &aYou obtained the &5&lDragon Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # BEACON BACKPACK
+  # ====================
+  beacon_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/cyan
+    model_data_component:
+      floats: [100406]
+    slot: 22
+    display_name: '&f&lBeacon Backpack'
+    lore:
+      - '&7Tier 14 &8· &e324 slots &8· &b9 upgrades &8· &d8 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fObsidian &e%checkitem_amount_mat:OBSIDIAN%&7/&e4'
+      - '&8» &fNether Star &e%checkitem_amount_mat:NETHER_STAR%&7/&e2'
+      - '&8» &fBeacon &e%checkitem_amount_mat:BEACON%&7/&e2'
+      - '&8» &fDragon Backpack &e%checkitem_amount_namecontains:Dragon Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        obsidian:
+          type: has item
+          material: OBSIDIAN
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Obsidian &8(&e%checkitem_amount_mat:OBSIDIAN%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        star:
+          type: has item
+          material: NETHER_STAR
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Nether Stars &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        beacon:
+          type: has item
+          material: BEACON
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Beacons &8(&e%checkitem_amount_mat:BEACON%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        dragon_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Dragon Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Dragon Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% obsidian 4'
+      - '[console] minecraft:clear %player_name% nether_star 2'
+      - '[console] minecraft:clear %player_name% beacon 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"dragon_backpack"}}] 1'
+      - '[player] cp give beacon_backpack %player_name% 1'
+      - '[message] &aYou obtained the &f&lBeacon Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # ANCIENT BACKPACK
+  # ====================
+  ancient_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/brown
+    model_data_component:
+      floats: [100306]
+    slot: 23
+    display_name: '&6&l&lAncient Backpack'
+    lore:
+      - '&7Tier 15 &8· &e378 slots &8· &b9 upgrades &8· &d9 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fAncient Debris &e%checkitem_amount_mat:ANCIENT_DEBRIS%&7/&e8'
+      - '&8» &fBeacon Backpack &e%checkitem_amount_namecontains:Beacon Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        debris:
+          type: has item
+          material: ANCIENT_DEBRIS
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Ancient Debris &8(&e%checkitem_amount_mat:ANCIENT_DEBRIS%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        beacon_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Beacon Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Beacon Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ancient_debris 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"beacon_backpack"}}] 1'
+      - '[player] cp give ancient_backpack %player_name% 1'
+      - '[message] &aYou obtained the &8&lAncient Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MASTER BACKPACK
+  # ====================
+  master_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/purple
+    model_data_component:
+      floats: [101306]
+    slot: 24
+    display_name: '&6&lMaster Backpack'
+    lore:
+      - '&7Tier 16 &8· &e432 slots &8· &b9 upgrades &8· &d10 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fNetherite Block &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e6'
+      - '&8» &fShulker Box &e%checkitem_amount_mat:SHULKER_BOX%&7/&e2'
+      - '&8» &fAncient Backpack &e%checkitem_amount_namecontains:Ancient Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        netherite:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 6
+          deny_commands:
+            - '[message] &cMissing Netherite Blocks &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e6&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        shulker:
+          type: has item
+          material: SHULKER_BOX
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Shulker Boxes &8(&e%checkitem_amount_mat:SHULKER_BOX%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        ancient_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Ancient Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Ancient Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 6'
+      - '[console] minecraft:clear %player_name% shulker_box 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"ancient_backpack"}}] 1'
+      - '[player] cp give master_backpack %player_name% 1'
+      - '[message] &aYou obtained the &6&lMaster Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # SUPREME BACKPACK
+  # ====================
+  supreme_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/pink
+    model_data_component:
+      floats: [101206]
+    slot: 25
+    display_name: '&c&lSupreme Backpack'
+    lore:
+      - '&7Tier 17 &8· &e486 slots &8· &b9 upgrades &8· &d11 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fEnd Crystal &e%checkitem_amount_mat:END_CRYSTAL%&7/&e6'
+      - '&8» &fCrying Obsidian &e%checkitem_amount_mat:CRYING_OBSIDIAN%&7/&e2'
+      - '&8» &fMaster Backpack &e%checkitem_amount_namecontains:Master Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        crystal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 6
+          deny_commands:
+            - '[message] &cMissing End Crystals &8(&e%checkitem_amount_mat:END_CRYSTAL%&8/&e6&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        obsidian:
+          type: has item
+          material: CRYING_OBSIDIAN
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Crying Obsidian &8(&e%checkitem_amount_mat:CRYING_OBSIDIAN%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        master_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Master Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Master Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% end_crystal 6'
+      - '[console] minecraft:clear %player_name% crying_obsidian 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"master_backpack"}}] 1'
+      - '[player] cp give supreme_backpack %player_name% 1'
+      - '[message] &aYou obtained the &c&lSupreme Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MYTHIC BACKPACK
+  # ====================
+  mythic_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/yellow
+    model_data_component:
+      floats: [101606]
+    slot: 26
+    display_name: '&d&lMythic Backpack'
+    lore:
+      - '&7Tier 18 &8· &e540 slots &8· &b9 upgrades &8· &d12 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fTotem of Undying &e%checkitem_amount_mat:TOTEM_OF_UNDYING%&7/&e8'
+      - '&8» &fSupreme Backpack &e%checkitem_amount_namecontains:Supreme Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        totem:
+          type: has item
+          material: TOTEM_OF_UNDYING
+          amount: 8
+          deny_commands:
+            - '[message] &cMissing Totems of Undying &8(&e%checkitem_amount_mat:TOTEM_OF_UNDYING%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        supreme_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Supreme Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Supreme Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% totem_of_undying 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"supreme_backpack"}}] 1'
+      - '[player] cp give mythic_backpack %player_name% 1'
+      - '[message] &aYou obtained the &d&lMythic Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # DIVINE BACKPACK
+  # ====================
+  divine_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/light_gray
+    model_data_component:
+      floats: [100806]
+    slot: 30
+    display_name: '&b&lDivine Backpack'
+    lore:
+      - '&7Tier 19 &8· &e594 slots &8· &b9 upgrades &8· &d14 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fNether Star &e%checkitem_amount_mat:NETHER_STAR%&7/&e4'
+      - '&8» &fNetherite Block &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e4'
+      - '&8» &fMythic Backpack &e%checkitem_amount_namecontains:Mythic Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        star:
+          type: has item
+          material: NETHER_STAR
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Nether Stars &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        netherite:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Netherite Blocks &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mythic_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Mythic Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Mythic Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% nether_star 4'
+      - '[console] minecraft:clear %player_name% netherite_block 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"mythic_backpack"}}] 1'
+      - '[player] cp give divine_backpack %player_name% 1'
+      - '[message] &aYou obtained the &b&lDivine Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # INFINITY BACKPACK
+  # ====================
+  infinity_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/gray
+    model_data_component:
+      floats: [100506]
+    slot: 31
+    display_name: '&6&lInfinity Backpack'
+    lore:
+      - '&7Tier 20 &8· &e648 slots &8· &b9 upgrades &8· &d15 pages'
+      - ''
+      - '&6You need'
+      - '&8» &fNetherite Block &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e4'
+      - '&8» &fNether Star &e%checkitem_amount_mat:NETHER_STAR%&7/&e2'
+      - '&8» &fDragon Egg &e%checkitem_amount_mat:DRAGON_EGG%&7/&e2'
+      - '&8» &fDivine Backpack &e%checkitem_amount_namecontains:Divine Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        netherite:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 4
+          deny_commands:
+            - '[message] &cMissing Netherite Blocks &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        star:
+          type: has item
+          material: NETHER_STAR
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Nether Stars &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        egg:
+          type: has item
+          material: DRAGON_EGG
+          amount: 2
+          deny_commands:
+            - '[message] &cMissing Dragon Eggs &8(&e%checkitem_amount_mat:DRAGON_EGG%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        divine_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Divine Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Divine Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 4'
+      - '[console] minecraft:clear %player_name% nether_star 2'
+      - '[console] minecraft:clear %player_name% dragon_egg 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"divine_backpack"}}] 1'
+      - '[player] cp give infinity_backpack %player_name% 1'
+      - '[message] &aYou obtained the &6&lInfinity Backpack&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # ULTIMATE BACKPACK
+  # ====================
+  ultimate_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    model_data_component:
+      floats: [100106]
+    slot: 32
+    display_name: '&6&l&lUltimate Backpack'
+    lore:
+      - '&7Tier 21 &8· &e765 slots &8· &b9 upgrades &8· &d17 pages'
+      - '&7The largest backpack on the server'
+      - ''
+      - '&6You need'
+      - '&8» &fNetherite Block &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e1'
+      - '&8» &fNether Star &e%checkitem_amount_mat:NETHER_STAR%&7/&e1'
+      - '&8» &fEnd Crystal &e%checkitem_amount_mat:END_CRYSTAL%&7/&e1'
+      - '&8» &fDragon Head &e%checkitem_amount_mat:DRAGON_HEAD%&7/&e1'
+      - '&8» &fShulker Box &e%checkitem_amount_mat:SHULKER_BOX%&7/&e1'
+      - '&8» &fTotem of Undying &e%checkitem_amount_mat:TOTEM_OF_UNDYING%&7/&e1'
+      - '&8» &fBeacon &e%checkitem_amount_mat:BEACON%&7/&e1'
+      - '&8» &fDragon Egg &e%checkitem_amount_mat:DRAGON_EGG%&7/&e1'
+      - '&8» &fInfinity Backpack &e%checkitem_amount_namecontains:Infinity Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Empty the backpack before upgrading'
+      - '&7Items inside will be lost when it is replaced.'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        netherite:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Netherite Block'
+            - '[sound] ENTITY_VILLAGER_NO'
+        star:
+          type: has item
+          material: NETHER_STAR
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Nether Star'
+            - '[sound] ENTITY_VILLAGER_NO'
+        crystal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the End Crystal'
+            - '[sound] ENTITY_VILLAGER_NO'
+        head:
+          type: has item
+          material: DRAGON_HEAD
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Dragon Head'
+            - '[sound] ENTITY_VILLAGER_NO'
+        shulker:
+          type: has item
+          material: SHULKER_BOX
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Shulker Box'
+            - '[sound] ENTITY_VILLAGER_NO'
+        totem:
+          type: has item
+          material: TOTEM_OF_UNDYING
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Totem of Undying'
+            - '[sound] ENTITY_VILLAGER_NO'
+        beacon:
+          type: has item
+          material: BEACON
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Beacon'
+            - '[sound] ENTITY_VILLAGER_NO'
+        egg:
+          type: has item
+          material: DRAGON_EGG
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Dragon Egg'
+            - '[sound] ENTITY_VILLAGER_NO'
+        infinity_backpack:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Infinity Backpack% >= 1'
+          deny_commands:
+            - '[message] &cMissing the Infinity Backpack'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 1'
+      - '[console] minecraft:clear %player_name% nether_star 1'
+      - '[console] minecraft:clear %player_name% end_crystal 1'
+      - '[console] minecraft:clear %player_name% dragon_head 1'
+      - '[console] minecraft:clear %player_name% shulker_box 1'
+      - '[console] minecraft:clear %player_name% totem_of_undying 1'
+      - '[console] minecraft:clear %player_name% beacon 1'
+      - '[console] minecraft:clear %player_name% dragon_egg 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"infinity_backpack"}}] 1'
+      - '[player] cp give ultimate_backpack %player_name% 1'
+      - '[message] &aYou obtained the &6&l&lUltimate Backpack&a. &7The best backpack on the server!'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # BACKPACK MATERIALS PANEL (1/2)
+  # ====================
+  panel_mat_backpacks_1:
+    material: CHEST
+    slot: 44
+    display_name: '&6Backpack Materials &7(1/2)'
+    lore:
+      - '&8» &fString: &e%checkitem_amount_mat:STRING%'
+      - '&8» &fLeather: &e%checkitem_amount_mat:LEATHER%'
+      - '&8» &fChest: &e%checkitem_amount_mat:CHEST%'
+      - '&8» &fCopper Ingot: &e%checkitem_amount_mat:COPPER_INGOT%'
+      - '&8» &fIron Ingot: &e%checkitem_amount_mat:IRON_INGOT%'
+      - '&8» &fGold Ingot: &e%checkitem_amount_mat:GOLD_INGOT%'
+      - '&8» &fDiamond: &e%checkitem_amount_mat:DIAMOND%'
+      - '&8» &fNetherite Ingot: &e%checkitem_amount_mat:NETHERITE_INGOT%'
+      - '&8» &fUpgrade Template: &e%checkitem_amount_mat:NETHERITE_UPGRADE_SMITHING_TEMPLATE%'
+      - '&8» &fEmerald: &e%checkitem_amount_mat:EMERALD%'
+      - '&8» &fAmethyst Shard: &e%checkitem_amount_mat:AMETHYST_SHARD%'
+      - '&8» &fQuartz: &e%checkitem_amount_mat:QUARTZ%'
+      - '&8» &fPrismarine Crystals: &e%checkitem_amount_mat:PRISMARINE_CRYSTALS%'
+      - ''
+      - '&eClick to refresh'
+    left_click_commands:
+      - '[refresh]'
+
+  # ====================
+  # BACKPACK MATERIALS PANEL (2/2)
+  # ====================
+  panel_mat_backpacks_2:
+    material: CHEST
+    slot: 45
+    display_name: '&6Backpack Materials &7(2/2)'
+    lore:
+      - '&8» &fEcho Shard: &e%checkitem_amount_mat:ECHO_SHARD%'
+      - '&8» &fEnder Eye: &e%checkitem_amount_mat:ENDER_EYE%'
+      - '&8» &fDragon Breath: &e%checkitem_amount_mat:DRAGON_BREATH%'
+      - '&8» &fElytra: &e%checkitem_amount_mat:ELYTRA%'
+      - '&8» &fObsidian: &e%checkitem_amount_mat:OBSIDIAN%'
+      - '&8» &fBeacon: &e%checkitem_amount_mat:BEACON%'
+      - '&8» &fNether Star: &e%checkitem_amount_mat:NETHER_STAR%'
+      - '&8» &fAncient Debris: &e%checkitem_amount_mat:ANCIENT_DEBRIS%'
+      - '&8» &fNetherite Block: &e%checkitem_amount_mat:NETHERITE_BLOCK%'
+      - '&8» &fEnd Crystal: &e%checkitem_amount_mat:END_CRYSTAL%'
+      - '&8» &fTotem of Undying: &e%checkitem_amount_mat:TOTEM_OF_UNDYING%'
+      - '&8» &fDragon Egg: &e%checkitem_amount_mat:DRAGON_EGG%'
+      - ''
+      - '&eClick to refresh'
+    left_click_commands:
+      - '[refresh]'
+
+  # ====================
+  # NEXT PAGE
+  # ====================
+  next_page:
+    material: ARROW
+    slot: 53
+    display_name: '&a&l▶ Page 2: Upgrades'
+    lore:
+      - '&7View the upgrades'
+      - '&7available for your backpack.'
+      - ''
+      - '&aClick to continue'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[openguimenu] probablybackpacks_menu_page2'
