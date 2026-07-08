@@ -1,10 +1,9 @@
 # ProbablyBackpacks Expansion
 
-A complete expansion pack for **ProbablyBackpacks** that introduces a long-term backpack progression with new backpack tiers, balanced crafting recipes and an integrated **DeluxeMenus** interface for an intuitive crafting experience.
+A configuration pack for **ProbablyBackpacks** that extends the default backpack progression to **21 backpack tiers**, featuring balanced crafting recipes and a fully integrated **DeluxeMenus** interface.
 
-This repository is **not** a plugin.
-
-It is a configuration pack that extends ProbablyBackpacks using custom backpack definitions and a fully configured DeluxeMenus interface.
+> **Note**
+> This repository is **not** a plugin or a fork of ProbablyBackpacks. It is a community-made configuration pack that extends the original plugin.
 
 ---
 
@@ -21,32 +20,11 @@ Craft backpacks & upgrades directly from the GUI.
 
 ## 21 Backpack Tiers
 
-This expansion adds **21 custom backpack tiers**, providing a complete progression from early-game to late-game.
+This expansion extends the default ProbablyBackpacks progression to a total of **21 backpack tiers**, providing a complete progression from early-game to end-game.
 
-Backpack capacities range from **27 slots** up to **765 slots**, allowing players to gradually unlock larger storage as they progress through the game.
+Backpack capacities range from **27 slots** up to **765 slots**, allowing players to gradually unlock larger storage as they progress.
 
-Each backpack upgrades from the previous tier, creating a balanced and rewarding survival experience.
-
-Examples include:
-
-- Leather
-- Copper
-- Iron
-- Gold
-- Diamond
-- Netherite
-- Emerald
-- Quartz
-- Amethyst
-- Prismarine
-- Echo
-- Ender
-- Dragon
-- Beacon
-
-and many more.
-
-Each backpack upgrades from the previous one instead of replacing the entire progression.
+Each new tier builds upon the previous backpack, creating a balanced and rewarding progression.
 
 ---
 
@@ -121,6 +99,19 @@ ProbablyBackpacks-Expansion/
     ├── probablybackpacks_menu.yml
     └── probablybackpacks_menu_page2.yml
 ```
+
+---
+
+# Compatibility
+
+Tested with:
+
+- Paper v26.1.2
+- ProbablyBackpacks v2.3
+- CuriosPaper v2.0.0
+- DeluxeMenus v1.14.1
+- PlaceholderAPI v2.12.3
+- CheckItem Expansion v2.7.9
 
 ---
 
@@ -251,9 +242,11 @@ The menu automatically:
 
 # Backpack Progression
 
-The backpacks follow an upgrade path.
+The default ProbablyBackpacks progression has been extended to a total of **21 backpack tiers**, each requiring the previous backpack as part of its crafting recipe.
 
-Example:
+Each backpack tier includes its own balanced crafting recipe designed to match the progression of the game.
+
+The complete backpack progression is shown below:
 
 | Tier | Backpack   | Slots | Upgrades |
 | ---- | ---------- | ----- | -------- |
@@ -302,7 +295,7 @@ You can customize every backpack without modifying the plugin itself, including:
 - Item Model
 - Custom Model Data
 
-Below are some examples of the custom crafting recipes included in this expansion:
+Below are all crafting recipes included in this expansion:
 
 <table>
 <tr>
@@ -503,7 +496,7 @@ or restart the server.
 
 ## Original Plugin
 
-- ProbablyBackpacks | Brothergaming52
+- ProbablyBackpacks by Brothergaming52
 
 ## Dependencies
 
@@ -514,4 +507,6 @@ or restart the server.
 
 ## Expansion Pack
 
-Developed by **Angel Ramirez**.
+Created and maintained by **Angel Ramirez**.
+
+GitHub contributions, suggestions and improvements are always welcome.
