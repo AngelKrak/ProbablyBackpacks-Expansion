@@ -1,0 +1,352 @@
+backpacks:
+  leather_backpack:
+    name: §6Leather Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/leather/base
+    custom_model_data: 100001
+    slots: 27
+    recipe:
+      shape:
+      - SLS
+      - SCS
+      - LLL
+      ingredients:
+        S: STRING
+        L: LEATHER
+        C: CHEST
+    upgrade_slots: 1
+  copper_backpack:
+    name: §eCopper Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/copper/base
+    custom_model_data: 100002
+    slots: 45
+    recipe:
+      shape:
+      - CCC
+      - CBC
+      - CCC
+      ingredients:
+        C: COPPER_INGOT
+        B: p_backpack:leather_backpack
+    upgrade_slots: 2
+  iron_backpack:
+    name: §fIron Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/iron/base
+    custom_model_data: 100003
+    slots: 54
+    recipe:
+      shape:
+      - III
+      - IBI
+      - III
+      ingredients:
+        I: IRON_INGOT
+        B: p_backpack:copper_backpack
+    upgrade_slots: 3
+  gold_backpack:
+    name: §eGold Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/gold/base
+    custom_model_data: 100004
+    slots: 81
+    recipe:
+      shape:
+      - GGG
+      - GBG
+      - GGG
+      ingredients:
+        G: GOLD_INGOT
+        B: p_backpack:iron_backpack
+    upgrade_slots: 4
+  diamond_backpack:
+    name: §bDiamond Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/diamond/base
+    custom_model_data: 100005
+    slots: 108
+    recipe:
+      shape:
+      - DDD
+      - DBD
+      - DDD
+      ingredients:
+        D: DIAMOND
+        B: p_backpack:gold_backpack
+    upgrade_slots: 5
+  netherite_backpack:
+    name: §5Netherite Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/base
+    custom_model_data: 100006
+    slots: 126
+    recipe:
+      type: SMITHING
+      base: p_backpack:diamond_backpack
+      addition: NETHERITE_INGOT
+      template: NETHERITE_UPGRADE_SMITHING_TEMPLATE
+    upgrade_slots: 6
+
+  emerald_backpack:
+    name: §aEmerald Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/green
+    custom_model_data: 100606
+    slots: 144
+    recipe:
+      shape:
+      - EEE
+      - EBE
+      - EEE
+      ingredients:
+        E: EMERALD
+        B: p_backpack:netherite_backpack
+    upgrade_slots: 7
+
+  amethyst_backpack:
+    name: §dAmethyst Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/purple
+    custom_model_data: 101306
+    slots: 162
+    recipe:
+      shape:
+      - AAA
+      - ABA
+      - AAA
+      ingredients:
+        A: AMETHYST_SHARD
+        B: p_backpack:emerald_backpack
+    upgrade_slots: 7
+
+  quartz_backpack:
+    name: §fQuartz Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/white
+    custom_model_data: 101506
+    slots: 180
+    recipe:
+      shape:
+      - QQQ
+      - QBQ
+      - QQQ
+      ingredients:
+        Q: QUARTZ
+        B: p_backpack:amethyst_backpack
+    upgrade_slots: 7
+
+  prismarine_backpack:
+    name: §3Prismarine Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/lime
+    custom_model_data: 100906
+    slots: 198
+    recipe:
+      shape:
+      - PPP
+      - PBP
+      - PPP
+      ingredients:
+        P: PRISMARINE_CRYSTALS
+        B: p_backpack:quartz_backpack
+    upgrade_slots: 8
+
+  echo_backpack:
+    name: §9Echo Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/green
+    custom_model_data: 100606
+    slots: 216
+    recipe:
+      shape:
+      - ESE
+      - RBR
+      - ECE
+      ingredients:
+        E: ECHO_SHARD
+        S: SCULK_CATALYST
+        R: RECOVERY_COMPASS
+        C: SCULK_SHRIEKER
+        B: p_backpack:prismarine_backpack
+    upgrade_slots: 8
+
+  ender_backpack:
+    name: §5Ender Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    custom_model_data: 100106
+    slots: 243
+    recipe:
+      shape:
+      - ECE
+      - CBC
+      - ECE
+      ingredients:
+        E: ENDER_EYE
+        C: ENDER_CHEST
+        B: p_backpack:echo_backpack
+    upgrade_slots: 8
+
+  dragon_backpack:
+    name: §5Dragon Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    custom_model_data: 100106
+    slots: 270
+    recipe:
+      shape:
+      - DHD
+      - CBC
+      - DED
+
+      ingredients:
+        D: DRAGON_BREATH
+        H: DRAGON_HEAD
+        C: END_CRYSTAL
+        E: ELYTRA
+        B: p_backpack:ender_backpack
+    upgrade_slots: 9
+
+  beacon_backpack:
+    name: §fBeacon Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/cyan
+    custom_model_data: 100406
+    slots: 324
+    recipe:
+      shape:
+      - ONO
+      - CBC
+      - ONO
+
+      ingredients:
+        O: OBSIDIAN
+        N: NETHER_STAR
+        C: BEACON
+        B: p_backpack:dragon_backpack
+    upgrade_slots: 9
+
+  ancient_backpack:
+    name: §8Ancient Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/brown
+    custom_model_data: 100306
+    slots: 378
+    recipe:
+      shape:
+      - AAA
+      - ABA
+      - AAA
+      ingredients:
+        A: ANCIENT_DEBRIS
+        B: p_backpack:beacon_backpack
+    upgrade_slots: 9
+
+  master_backpack:
+    name: §6Master Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/purple
+    custom_model_data: 101306
+    slots: 432
+    recipe:
+      shape:
+      - NNN
+      - SBS
+      - NNN
+      ingredients:
+        N: NETHERITE_BLOCK
+        S: SHULKER_BOX
+        B: p_backpack:ancient_backpack
+    upgrade_slots: 9
+
+  supreme_backpack:
+    name: §cSupreme Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/pink
+    custom_model_data: 101206
+    slots: 486
+    recipe:
+      shape:
+      - EEE
+      - CBC
+      - EEE
+      ingredients:
+        E: END_CRYSTAL
+        C: CRYING_OBSIDIAN
+        B: p_backpack:master_backpack
+    upgrade_slots: 9
+
+  mythic_backpack:
+    name: §dMythic Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/yellow
+    custom_model_data: 101606
+    slots: 540
+    recipe:
+      shape:
+      - TTT
+      - TBT
+      - TTT
+      ingredients:
+        T: TOTEM_OF_UNDYING
+        B: p_backpack:supreme_backpack
+    upgrade_slots: 9
+
+  divine_backpack:
+    name: §bDivine Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/light_gray
+    custom_model_data: 100806
+    slots: 594
+    recipe:
+      shape:
+      - SNS
+      - NBN
+      - SNS
+      ingredients:
+        S: NETHER_STAR
+        N: NETHERITE_BLOCK
+        B: p_backpack:mythic_backpack
+    upgrade_slots: 9
+
+  infinity_backpack:
+    name: §6§lInfinity Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/gray
+    custom_model_data: 100506
+    slots: 648
+    recipe:
+      shape:
+      - NSN
+      - IBI
+      - NSN
+      ingredients:
+        N: NETHERITE_BLOCK
+        S: NETHER_STAR
+        I: DRAGON_EGG
+        B: p_backpack:divine_backpack
+    upgrade_slots: 9
+
+  ultimate_backpack:
+    name: §6§lUltimate Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    custom_model_data: 100106
+    slots: 765
+    recipe:
+      shape:
+      - NSE
+      - DBH
+      - TWI
+      ingredients:
+        N: NETHERITE_BLOCK
+        S: NETHER_STAR
+        E: END_CRYSTAL
+        D: DRAGON_HEAD
+        B: p_backpack:infinity_backpack
+        H: SHULKER_BOX
+        T: TOTEM_OF_UNDYING
+        W: BEACON
+        I: DRAGON_EGG
+    upgrade_slots: 9

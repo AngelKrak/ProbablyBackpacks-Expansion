@@ -1,0 +1,1257 @@
+menu_title: '&8🎒 &5Mejoras &7(&fPágina 2/2&7)'
+size: 54
+
+items:
+  # ====================
+  # RELLENO
+  # ====================
+  filler:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 0-53
+
+  # ====================
+  # SEPARADORES HEADER
+  # ====================
+  sep_header:
+    material: PURPLE_STAINED_GLASS_PANE
+    display_name: '&5&lMejoras'
+    slots:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
+
+  # ====================
+  # PANEL INFO
+  # ====================
+  info:
+    material: NETHER_STAR
+    slot: 4
+    display_name: '&e&lSistema de Mejoras'
+    lore:
+      - '&5Mejoras &8(fila 1-2)'
+      - '&8» &fBase &7· Crafteo &7· Pickup'
+      - '&8» &fImán &7· Comida &7· Restock'
+      - '&8» &fCompactar &7· Herramienta &7· Yunque'
+      - '&8» &fJukebox &7· Forja &7· Fundición'
+      - '&8» &fAlto Horno &7· Ahumador'
+      - ''
+      - '&5Stack Upgrades &8(fila 3)'
+      - '&8» &f5 tiers, consumen el stack anterior'
+      - ''
+      - '&e➜ Regresa a la página 1 para ver las Mochilas'
+
+  # ====================
+  # SEPARADOR FILA 2
+  # ====================
+  sep_row2:
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 23
+      - 24
+      - 25
+      - 26
+
+  # ====================
+  # SEPARADOR FILA 3
+  # ====================
+  sep_row3:
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 32
+      - 33
+      - 34
+      - 35
+
+  # ====================
+  # UPGRADE BASE
+  # ====================
+  upgrade_base:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/upgrade_base
+    model_data_component:
+      floats: [200015]
+    slot: 9
+    display_name: '&6&lBase de Mejora'
+    lore:
+      - '&7Componente base para la mayoria'
+      - '&7de las mejoras.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fHilo &e%checkitem_amount_mat:STRING%&7/&e4'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fCuero &e%checkitem_amount_mat:LEATHER%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        hilo:
+          type: has item
+          material: STRING
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Hilos &8(&e%checkitem_amount_mat:STRING%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cuero:
+          type: has item
+          material: LEATHER
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta Cuero'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% string 4'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% leather 1'
+      - '[player] cp give upgrade_base %player_name% 1'
+      - '[message] &aObtuviste una &6&lBase de Mejora&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # CRAFTING STATION
+  # ====================
+  crafting_station:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/crafting_station
+    model_data_component:
+      floats: [200001]
+    slot: 10
+    display_name: '&6&lEstación de Crafteo'
+    lore:
+      - '&7Mesa de crafteo portátil'
+      - '&7integrada en tu mochila.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fTablones de Roble &e%checkitem_amount_mat:OAK_PLANKS%&7/&e4'
+      - '&8» &fMesa de Crafteo &e%checkitem_amount_mat:CRAFTING_TABLE%&7/&e2'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        tablas:
+          type: has item
+          material: OAK_PLANKS
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Tablas de Roble &8(&e%checkitem_amount_mat:OAK_PLANKS%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mesa:
+          type: has item
+          material: CRAFTING_TABLE
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Mesas de Crafteo &8(&e%checkitem_amount_mat:CRAFTING_TABLE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% oak_planks 4'
+      - '[console] minecraft:clear %player_name% crafting_table 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give crafting_station %player_name% 1'
+      - '[message] &aObtuviste la &6&lEstación de Crafteo&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # PICKUP UPGRADE
+  # ====================
+  pickup_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/pickup_upgrade
+    model_data_component:
+      floats: [200002]
+    slot: 11
+    display_name: '&6&lMejora de Recogida'
+    lore:
+      - '&7Recoge automaticamente items'
+      - '&7del suelo hacia la mochila.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fPistón &e%checkitem_amount_mat:PISTON%&7/&e1'
+      - '&8» &fHilo &e%checkitem_amount_mat:STRING%&7/&e2'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e3'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        piston:
+          type: has item
+          material: PISTON
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Pistón'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hilo:
+          type: has item
+          material: STRING
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Hilos &8(&e%checkitem_amount_mat:STRING%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 3
+          deny_commands:
+            - '[message] &cFalta Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e3&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% piston 1'
+      - '[console] minecraft:clear %player_name% string 2'
+      - '[console] minecraft:clear %player_name% redstone 3'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give pickup_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Recogida&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # MAGNET UPGRADE
+  # ====================
+  magnet_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/magnet_upgrade
+    model_data_component:
+      floats: [200003]
+    slot: 12
+    display_name: '&6&lMejora Magnética'
+    lore:
+      - '&7Atrae items cercanos directamente'
+      - '&7a la mochila. Requiere Mejora de Recogida.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fPerla de Ender &e%checkitem_amount_mat:ENDER_PEARL%&7/&e2'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e1'
+      - '&8» &fDiamante &e%checkitem_amount_mat:DIAMOND%&7/&e1'
+      - '&8» &fLapislázuli &e%checkitem_amount_mat:LAPIS_LAZULI%&7/&e1'
+      - '&8» &fMejora de Recogida &e%checkitem_amount_namecontains:Pickup Upgrade%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        perla:
+          type: has item
+          material: ENDER_PEARL
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Perlas de Éxodo &8(&e%checkitem_amount_mat:ENDER_PEARL%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta Redstone'
+            - '[sound] ENTITY_VILLAGER_NO'
+        diamante:
+          type: has item
+          material: DIAMOND
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Diamante'
+            - '[sound] ENTITY_VILLAGER_NO'
+        lapis:
+          type: has item
+          material: LAPIS_LAZULI
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Lapis'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Pickup Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mejora de Recogida'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ender_pearl 2'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 1'
+      - '[console] minecraft:clear %player_name% diamond 1'
+      - '[console] minecraft:clear %player_name% lapis_lazuli 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"pickup_upgrade"}}] 1'
+      - '[player] cp give magnet_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora Magnética&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # FEEDING UPGRADE
+  # ====================
+  feeding_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/feeding_upgrade
+    model_data_component:
+      floats: [200004]
+    slot: 13
+    display_name: '&6&lMejora de Alimentación'
+    lore:
+      - '&7Usa automáticamente comida'
+      - '&7almacenada en la mochila.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fZanahoria Dorada &e%checkitem_amount_mat:GOLDEN_CARROT%&7/&e1'
+      - '&8» &fManzana Dorada &e%checkitem_amount_mat:GOLDEN_APPLE%&7/&e1'
+      - '&8» &fRebanada de sandía resplandeciente &e%checkitem_amount_mat:GLISTERING_MELON_SLICE%&7/&e1'
+      - '&8» &fPerla de Ender &e%checkitem_amount_mat:ENDER_PEARL%&7/&e1'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        zanahoria:
+          type: has item
+          material: GOLDEN_CARROT
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Zanahoria Dorada'
+            - '[sound] ENTITY_VILLAGER_NO'
+        manzana:
+          type: has item
+          material: GOLDEN_APPLE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Manzana Dorada'
+            - '[sound] ENTITY_VILLAGER_NO'
+        melon:
+          type: has item
+          material: GLISTERING_MELON_SLICE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Melón Brillante'
+            - '[sound] ENTITY_VILLAGER_NO'
+        perla:
+          type: has item
+          material: ENDER_PEARL
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Perla de Ender'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% golden_carrot 1'
+      - '[console] minecraft:clear %player_name% golden_apple 1'
+      - '[console] minecraft:clear %player_name% glistering_melon_slice 1'
+      - '[console] minecraft:clear %player_name% ender_pearl 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give feeding_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Alimentación&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # REFILL UPGRADE
+  # ====================
+  refill_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/refill_upgrade
+    model_data_component:
+      floats: [200005]
+    slot: 14
+    display_name: '&6&lMejora de Restock'
+    lore:
+      - '&7Rellena la hotbar automáticamente'
+      - '&7desde la mochila.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fPerla de Ender &e%checkitem_amount_mat:ENDER_PEARL%&7/&e1'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e2'
+      - '&8» &fCofre &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        perla:
+          type: has item
+          material: ENDER_PEARL
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Perla de Ender'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 2
+          deny_commands:
+            - '[message] &cFalta Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cofre:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Cofre'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ender_pearl 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% redstone 2'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give refill_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Restock&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # COMPACTING UPGRADE
+  # ====================
+  compacting_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/compacting_upgrade
+    model_data_component:
+      floats: [200006]
+    slot: 15
+    display_name: '&6&lMejora de Compactado'
+    lore:
+      - '&7Comprime items en sus formas'
+      - '&7de bloque automáticamente.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fPistón &e%checkitem_amount_mat:PISTON%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e2'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        piston:
+          type: has item
+          material: PISTON
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Pistones &8(&e%checkitem_amount_mat:PISTON%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 2
+          deny_commands:
+            - '[message] &cFalta Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% piston 4'
+      - '[console] minecraft:clear %player_name% redstone 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give compacting_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Compactado&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # TOOL SWAPPER
+  # ====================
+  tool_swapper:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/tool_swapper
+    model_data_component:
+      floats: [200014]
+    slot: 16
+    display_name: '&6&lCambiador de Herramientas'
+    lore:
+      - '&7Cambia automáticamente a la mejor'
+      - '&7herramienta al minar.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e2'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fPala de Madera &e%checkitem_amount_mat:WOODEN_SHOVEL%&7/&e1'
+      - '&8» &fEspada de Madera &e%checkitem_amount_mat:WOODEN_SWORD%&7/&e1'
+      - '&8» &fPico de Madera &e%checkitem_amount_mat:WOODEN_PICKAXE%&7/&e1'
+      - '&8» &fHacha de Madera &e%checkitem_amount_mat:WOODEN_AXE%&7/&e1'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 2
+          deny_commands:
+            - '[message] &cFalta Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        pala:
+          type: has item
+          material: WOODEN_SHOVEL
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Pala de Madera'
+            - '[sound] ENTITY_VILLAGER_NO'
+        espada:
+          type: has item
+          material: WOODEN_SWORD
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Espada de Madera'
+            - '[sound] ENTITY_VILLAGER_NO'
+        pico:
+          type: has item
+          material: WOODEN_PICKAXE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Pico de Madera'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hacha:
+          type: has item
+          material: WOODEN_AXE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Hacha de Madera'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% redstone 2'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% wooden_shovel 1'
+      - '[console] minecraft:clear %player_name% wooden_sword 1'
+      - '[console] minecraft:clear %player_name% wooden_pickaxe 1'
+      - '[console] minecraft:clear %player_name% wooden_axe 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give tool_swapper %player_name% 1'
+      - '[message] &aObtuviste el &6&lCambiador de Herramientas&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # ANVIL UPGRADE
+  # ====================
+  anvil_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/anvil_upgrade
+    model_data_component:
+      floats: [200008]
+    slot: 17
+    display_name: '&6&lMejora de Yunque'
+    lore:
+      - '&7Yunque portátil integrado'
+      - '&7en tu mochila.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fYunque &e%checkitem_amount_mat:ANVIL%&7/&e2'
+      - '&8» &fDiamante &e%checkitem_amount_mat:DIAMOND%&7/&e1'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fCofre &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        yunque:
+          type: has item
+          material: ANVIL
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Yunques &8(&e%checkitem_amount_mat:ANVIL%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        diamante:
+          type: has item
+          material: DIAMOND
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Diamante'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cofre:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Cofre'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% anvil 2'
+      - '[console] minecraft:clear %player_name% diamond 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give anvil_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Yunque&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # JUKEBOX UPGRADE
+  # ====================
+  jukebox_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/jukebox_upgrade
+    model_data_component:
+      floats: [200010]
+    slot: 18
+    display_name: '&6&lMejora de Jukebox'
+    lore:
+      - '&7Reproduce discos de música'
+      - '&7desde la GUI de tu mochila.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fJukebox &e%checkitem_amount_mat:JUKEBOX%&7/&e1'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e1'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        jukebox:
+          type: has item
+          material: JUKEBOX
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Jukebox'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta Redstone'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% jukebox 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% redstone 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give jukebox_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Jukebox&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # SMITHING UPGRADE
+  # ====================
+  smithing_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/smithing_upgrade
+    model_data_component:
+      floats: [200012]
+    slot: 19
+    display_name: '&6&lMejora de Forja'
+    lore:
+      - '&7Mesa de herrería portátil'
+      - '&7integrada en tu mochila.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fMesa de Herrería &e%checkitem_amount_mat:SMITHING_TABLE%&7/&e1'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e2'
+      - '&8» &fCofre &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        forja:
+          type: has item
+          material: SMITHING_TABLE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Mesa de Herrería'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cofre:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Cofre'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% smithing_table 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 2'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give smithing_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Forja&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # SMELTING UPGRADE
+  # ====================
+  smelting_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/smelting_upgrade
+    model_data_component:
+      floats: [200011]
+    slot: 20
+    display_name: '&6&lMejora de Fundición'
+    lore:
+      - '&7Funde items automáticamente'
+      - '&7mientras exploras.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fHorno &e%checkitem_amount_mat:FURNACE%&7/&e1'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e4'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        horno:
+          type: has item
+          material: FURNACE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Horno'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 4
+          deny_commands:
+            - '[message] &cFalta Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% furnace 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give smelting_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Fundición&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # BLASTING UPGRADE
+  # ====================
+  blasting_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/blasting_upgrade
+    model_data_component:
+      floats: [200009]
+    slot: 21
+    display_name: '&6&lMejora de Alto Horno'
+    lore:
+      - '&7Fundición rápida de minerales'
+      - '&7y materiales.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fAlto Horno &e%checkitem_amount_mat:BLAST_FURNACE%&7/&e1'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e4'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        alto_horno:
+          type: has item
+          material: BLAST_FURNACE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Alto Horno'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 4
+          deny_commands:
+            - '[message] &cFalta Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% blast_furnace 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give blasting_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Alto Horno&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # SMOKER UPGRADE
+  # ====================
+  smoker_upgrade:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/smoking_upgrade
+    model_data_component:
+      floats: [200013]
+    slot: 22
+    display_name: '&6&lMejora de Ahumador'
+    lore:
+      - '&7Cocina comida rápidamente'
+      - '&7mientras te mueves.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fAhumador &e%checkitem_amount_mat:SMOKER%&7/&e1'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e4'
+      - '&8» &fRedstone &e%checkitem_amount_mat:REDSTONE%&7/&e4'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        ahumador:
+          type: has item
+          material: SMOKER
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Ahumador'
+            - '[sound] ENTITY_VILLAGER_NO'
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        redstone:
+          type: has item
+          material: REDSTONE
+          amount: 4
+          deny_commands:
+            - '[message] &cFalta Redstone &8(&e%checkitem_amount_mat:REDSTONE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% smoker 1'
+      - '[console] minecraft:clear %player_name% iron_ingot 4'
+      - '[console] minecraft:clear %player_name% redstone 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give smoker_upgrade %player_name% 1'
+      - '[message] &aObtuviste la &6&lMejora de Ahumador&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - COBRE
+  # ====================
+  stack_upgrade_0:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_0
+    model_data_component:
+      floats: [200016]
+    slot: 27
+    display_name: '&c&lStack Upgrade: Cobre'
+    lore:
+      - '&7Aumenta el stack máximo'
+      - '&7de la mochila a &e96&7.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Cobre &e%checkitem_amount_mat:COPPER_BLOCK%&7/&e8'
+      - '&8» &fBase de Mejora &e%checkitem_amount_namecontains:Upgrade Base%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        cobre:
+          type: has item
+          material: COPPER_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Bloques de Cobre &8(&e%checkitem_amount_mat:COPPER_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        base:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Upgrade Base% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Base de Mejora'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% copper_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"upgrade_base"}}] 1'
+      - '[player] cp give stack_upgrade_0 %player_name% 1'
+      - '[message] &aObtuviste el &c&lStack Upgrade: Cobre&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - HIERRO
+  # ====================
+  stack_upgrade_1:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_1
+    model_data_component:
+      floats: [200007]
+    slot: 28
+    display_name: '&f&lStack Upgrade: Hierro'
+    lore:
+      - '&7Aumenta el stack máximo'
+      - '&7de la mochila a &e128&7.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Hierro &e%checkitem_amount_mat:IRON_BLOCK%&7/&e8'
+      - '&8» &fStack Upgrade Cobre &e%checkitem_amount_namecontains:Copper Stack Upgrade%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        hierro:
+          type: has item
+          material: IRON_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Bloques de Hierro &8(&e%checkitem_amount_mat:IRON_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_cobre:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Copper Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cFalta el Stack Upgrade de Cobre'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% iron_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_0"}}] 1'
+      - '[player] cp give stack_upgrade_1 %player_name% 1'
+      - '[message] &aObtuviste el &f&lStack Upgrade: Hierro&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - ORO
+  # ====================
+  stack_upgrade_2:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_2
+    model_data_component:
+      floats: [200017]
+    slot: 29
+    display_name: '&6&lStack Upgrade: Oro'
+    lore:
+      - '&7Aumenta el stack máximo'
+      - '&7de la mochila a &e256&7.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Oro &e%checkitem_amount_mat:GOLD_BLOCK%&7/&e8'
+      - '&8» &fStack Upgrade Hierro &e%checkitem_amount_namecontains:Iron Stack Upgrade%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        oro:
+          type: has item
+          material: GOLD_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Bloques de Oro &8(&e%checkitem_amount_mat:GOLD_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_hierro:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Iron Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cFalta el Stack Upgrade de Hierro'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% gold_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_1"}}] 1'
+      - '[player] cp give stack_upgrade_2 %player_name% 1'
+      - '[message] &aObtuviste el &6&lStack Upgrade: Oro&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - DIAMANTE
+  # ====================
+  stack_upgrade_3:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_3
+    model_data_component:
+      floats: [200018]
+    slot: 30
+    display_name: '&b&lStack Upgrade: Diamante'
+    lore:
+      - '&7Aumenta el stack máximo'
+      - '&7de la mochila a &e512&7.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Diamante &e%checkitem_amount_mat:DIAMOND_BLOCK%&7/&e8'
+      - '&8» &fStack Upgrade Oro &e%checkitem_amount_namecontains:Gold Stack Upgrade%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        diamante:
+          type: has item
+          material: DIAMOND_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Bloques de Diamante &8(&e%checkitem_amount_mat:DIAMOND_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_oro:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Gold Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cFalta el Stack Upgrade de Oro'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% diamond_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_2"}}] 1'
+      - '[player] cp give stack_upgrade_3 %player_name% 1'
+      - '[message] &aObtuviste el &b&lStack Upgrade: Diamante&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # STACK UPGRADE - NETHERITA
+  # ====================
+  stack_upgrade_4:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:upgrades/stack_upgrade_4
+    model_data_component:
+      floats: [200019]
+    slot: 31
+    display_name: '&5&lStack Upgrade: Netherita'
+    lore:
+      - '&7Aumenta el stack máximo'
+      - '&7de la mochila a &e1024&7.'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e8'
+      - '&8» &fStack Upgrade Diamante &e%checkitem_amount_namecontains:Diamond Stack Upgrade%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        netherita:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Bloques de Netherita &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        stack_diamante:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Diamond Stack Upgrade% >= 1'
+          deny_commands:
+            - '[message] &cFalta el Stack Upgrade de Diamante'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"stack_upgrade_3"}}] 1'
+      - '[player] cp give stack_upgrade_4 %player_name% 1'
+      - '[message] &aObtuviste el &5&lStack Upgrade: Netherita&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # PÁGINA ANTERIOR
+  # ====================
+  prev_page:
+    material: ARROW
+    slot: 45
+    display_name: '&a&l◀ Página 1: Mochilas'
+    lore:
+      - '&7Ver las mochilas'
+      - '&7disponibles para craftear.'
+      - ''
+      - '&aClick para regresar'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[openguimenu] probablybackpacks_menu'
+
+  # ====================
+  # PANEL MATERIALES UPGRADES
+  # ====================
+  panel_mat_upgrades:
+    material: CHEST
+    slot: 53
+    display_name: '&5Materiales para Mejoras'
+    lore:
+      - '&8» &fHilo: &e%checkitem_amount_mat:STRING%'
+      - '&8» &fCuero: &e%checkitem_amount_mat:LEATHER%'
+      - '&8» &fLingote de Hierro: &e%checkitem_amount_mat:IRON_INGOT%'
+      - '&8» &fRedstone: &e%checkitem_amount_mat:REDSTONE%'
+      - '&8» &fPistón: &e%checkitem_amount_mat:PISTON%'
+      - '&8» &fPerla de Ender: &e%checkitem_amount_mat:ENDER_PEARL%'
+      - '&8» &fDiamante: &e%checkitem_amount_mat:DIAMOND%'
+      - '&8» &fBase de Mejora: &e%checkitem_amount_namecontains:Upgrade Base%'
+      - '&8» &fBloque de Cobre: &e%checkitem_amount_mat:COPPER_BLOCK%'
+      - '&8» &fBloque de Hierro: &e%checkitem_amount_mat:IRON_BLOCK%'
+      - '&8» &fBloque de Oro: &e%checkitem_amount_mat:GOLD_BLOCK%'
+      - '&8» &fBloque de Diamante: &e%checkitem_amount_mat:DIAMOND_BLOCK%'
+      - '&8» &fBloque de Netherita: &e%checkitem_amount_mat:NETHERITE_BLOCK%'
+      - ''
+      - '&ePresiona para actualizar'
+    left_click_commands:
+      - '[refresh]'

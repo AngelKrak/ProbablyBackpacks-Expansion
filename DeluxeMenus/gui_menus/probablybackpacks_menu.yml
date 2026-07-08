@@ -1,0 +1,1309 @@
+menu_title: '&8🎒 &6Mochilas &7(&fPágina 1/2&7)'
+open_command:
+  - mochilas
+  - backpacks
+  - tmochilas
+  - bps
+size: 54
+register_command: true
+command_description: 'Abre la tienda de mochilas y mejoras.'
+command_usage: '/mochilas'
+command_permission: 'deluxemenus.menu.mochilas'
+
+items:
+  # ====================
+  # RELLENO
+  # ====================
+  filler:
+    material: BLACK_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 0-53
+
+  # ====================
+  # SEPARADORES HEADER
+  # ====================
+  sep_header:
+    material: ORANGE_STAINED_GLASS_PANE
+    display_name: '&6&lMochilas'
+    slots:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
+
+  # ====================
+  # PANEL INFO
+  # ====================
+  info:
+    material: NETHER_STAR
+    slot: 4
+    display_name: '&e&lSistema de Mochilas'
+    lore:
+      - '&6Mochilas &8(21 tiers)'
+      - '&8» &fCuero &7· Cobre &7· Hierro &7· Oro'
+      - '&8» &fDiamante &7· Netherita &7· Esmeralda'
+      - '&8» &fAmatista &7· Cuarzo &7· Prismarina'
+      - '&8» &fEco &7· Ender &7· Dragón &7· Faro'
+      - '&8» &fAncestral &7· Maestra &7· Suprema'
+      - '&8» &fMítica &7· Divina &7· Infinita &7· Última'
+      - '&7Cada mejora consume la mochila anterior.'
+      - ''
+      - '&e➜ Pasa a la página 2 para ver las Mejoras'
+
+  # ====================
+  # SEPARADOR FILA 3 (centra las últimas 3 mochilas)
+  # ====================
+  sep_row3:
+    material: GRAY_STAINED_GLASS_PANE
+    display_name: ' '
+    slots:
+      - 27
+      - 28
+      - 29
+      - 33
+      - 34
+      - 35
+
+  # ====================
+  # MOCHILA DE CUERO
+  # ====================
+  leather_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/leather/base
+    model_data_component:
+      floats: [100001]
+    slot: 9
+    display_name: '&e&lMochila de Cuero'
+    lore:
+      - '&7Tier 1 &8· &e27 slots &8· &b1 mejora &8· &d1 página'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fHilo &e%checkitem_amount_mat:STRING%&7/&e4'
+      - '&8» &fCuero &e%checkitem_amount_mat:LEATHER%&7/&e4'
+      - '&8» &fCofre &e%checkitem_amount_mat:CHEST%&7/&e1'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        hilo:
+          type: has item
+          material: STRING
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Hilos &8(&e%checkitem_amount_mat:STRING%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cuero:
+          type: has item
+          material: LEATHER
+          amount: 4
+          deny_commands:
+            - '[message] &cFalta Cuero &8(&e%checkitem_amount_mat:LEATHER%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cofre:
+          type: has item
+          material: CHEST
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta un Cofre'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% string 4'
+      - '[console] minecraft:clear %player_name% leather 4'
+      - '[console] minecraft:clear %player_name% chest 1'
+      - '[player] cp give leather_backpack %player_name% 1'
+      - '[message] &aObtuviste la &e&lMochila de Cuero&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE COBRE
+  # ====================
+  copper_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/copper/base
+    model_data_component:
+      floats: [100002]
+    slot: 10
+    display_name: '&c&lMochila de Cobre'
+    lore:
+      - '&7Tier 2 &8· &e45 slots &8· &b2 mejoras &8· &d1 página'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fLingote de Cobre &e%checkitem_amount_mat:COPPER_INGOT%&7/&e8'
+      - '&8» &fMochila de Cuero &e%checkitem_amount_namecontains:Leather Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        cobre:
+          type: has item
+          material: COPPER_INGOT
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Cobre &8(&e%checkitem_amount_mat:COPPER_INGOT%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_cuero:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Leather Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Cuero'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% copper_ingot 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"leather_backpack"}}] 1'
+      - '[player] cp give copper_backpack %player_name% 1'
+      - '[message] &aObtuviste la &c&lMochila de Cobre&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE HIERRO
+  # ====================
+  iron_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/iron/base
+    model_data_component:
+      floats: [100003]
+    slot: 11
+    display_name: '&f&lMochila de Hierro'
+    lore:
+      - '&7Tier 3 &8· &e54 slots &8· &b3 mejoras &8· &d2 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e8'
+      - '&8» &fMochila de Cobre &e%checkitem_amount_namecontains:Copper Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        hierro:
+          type: has item
+          material: IRON_INGOT
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Hierro &8(&e%checkitem_amount_mat:IRON_INGOT%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_cobre:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Copper Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Cobre'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% iron_ingot 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"copper_backpack"}}] 1'
+      - '[player] cp give iron_backpack %player_name% 1'
+      - '[message] &aObtuviste la &f&lMochila de Hierro&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE ORO
+  # ====================
+  gold_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/gold/base
+    model_data_component:
+      floats: [100004]
+    slot: 12
+    display_name: '&6&lMochila de Oro'
+    lore:
+      - '&7Tier 4 &8· &e81 slots &8· &b4 mejoras &8· &d2 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fLingote de Oro &e%checkitem_amount_mat:GOLD_INGOT%&7/&e8'
+      - '&8» &fMochila de Hierro &e%checkitem_amount_namecontains:Iron Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        oro:
+          type: has item
+          material: GOLD_INGOT
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Lingotes de Oro &8(&e%checkitem_amount_mat:GOLD_INGOT%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_hierro:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Iron Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Hierro'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% gold_ingot 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"iron_backpack"}}] 1'
+      - '[player] cp give gold_backpack %player_name% 1'
+      - '[message] &aObtuviste la &6&lMochila de Oro&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE DIAMANTE
+  # ====================
+  diamond_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/diamond/base
+    model_data_component:
+      floats: [100005]
+    slot: 13
+    display_name: '&b&lMochila de Diamante'
+    lore:
+      - '&7Tier 5 &8· &e108 slots &8· &b5 mejoras &8· &d3 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fDiamante &e%checkitem_amount_mat:DIAMOND%&7/&e8'
+      - '&8» &fMochila de Oro &e%checkitem_amount_namecontains:Gold Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        diamante:
+          type: has item
+          material: DIAMOND
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Diamantes &8(&e%checkitem_amount_mat:DIAMOND%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_oro:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Gold Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Oro'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% diamond 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"gold_backpack"}}] 1'
+      - '[player] cp give diamond_backpack %player_name% 1'
+      - '[message] &aObtuviste la &b&lMochila de Diamante&a.'
+      - '[sound] ENTITY_PLAYER_LEVELUP'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE NETHERITA
+  # ====================
+  netherite_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/base
+    model_data_component:
+      floats: [100006]
+    slot: 14
+    display_name: '&5&lMochila de Netherita'
+    lore:
+      - '&7Tier 6 &8· &e126 slots &8· &b6 mejoras &8· &d3 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fLingote de Netherita &e%checkitem_amount_mat:NETHERITE_INGOT%&7/&e1'
+      - '&8» &fPlantilla Netherita &e%checkitem_amount_mat:NETHERITE_UPGRADE_SMITHING_TEMPLATE%&7/&e1'
+      - '&8» &fMochila de Diamante &e%checkitem_amount_namecontains:Diamond Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        netherita:
+          type: has item
+          material: NETHERITE_INGOT
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Lingote de Netherita'
+            - '[sound] ENTITY_VILLAGER_NO'
+        plantilla:
+          type: has item
+          material: NETHERITE_UPGRADE_SMITHING_TEMPLATE
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Plantilla de Netherita'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_diamante:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Diamond Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Diamante'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_ingot 1'
+      - '[console] minecraft:clear %player_name% netherite_upgrade_smithing_template 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"diamond_backpack"}}] 1'
+      - '[player] cp give netherite_backpack %player_name% 1'
+      - '[message] &aObtuviste la &5&lMochila de Netherita&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE ESMERALDA
+  # ====================
+  emerald_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/legacy/netherite/green
+    model_data_component:
+      floats: [100606]
+    slot: 15
+    display_name: '&a&lMochila de Esmeralda'
+    lore:
+      - '&7Tier 7 &8· &e144 slots &8· &b7 mejoras &8· &d4 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fEsmeraldas &e%checkitem_amount_mat:EMERALD%&7/&e8'
+      - '&8» &fMochila de Netherita &e%checkitem_amount_namecontains:Netherite Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        emerald:
+          type: has item
+          material: EMERALD
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Esmeraldas &8(&e%checkitem_amount_mat:EMERALD%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_netherite:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Netherite Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Netherita'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% emerald 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"netherite_backpack"}}] 1'
+      - '[player] cp give emerald_backpack %player_name% 1'
+      - '[message] &aObtuviste la &a&lMochila de Esmeralda&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE AMATISTA
+  # ====================
+  amethyst_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/purple
+    model_data_component:
+      floats: [101306]
+    slot: 16
+    display_name: '&d&lMochila de Amatista'
+    lore:
+      - '&7Tier 8 &8· &e162 slots &8· &b7 mejoras &8· &d4 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fFragmento de Amatista &e%checkitem_amount_mat:AMETHYST_SHARD%&7/&e8'
+      - '&8» &fMochila de Esmeralda &e%checkitem_amount_namecontains:Emerald Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        amatista:
+          type: has item
+          material: AMETHYST_SHARD
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Fragmentos de Amatista &8(&e%checkitem_amount_mat:AMETHYST_SHARD%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_esmeralda:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Emerald Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Esmeralda'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% amethyst_shard 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"emerald_backpack"}}] 1'
+      - '[player] cp give amethyst_backpack %player_name% 1'
+      - '[message] &aObtuviste la &d&lMochila de Amatista&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE CUARZO
+  # ====================
+  quartz_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/white
+    model_data_component:
+      floats: [101506]
+    slot: 17
+    display_name: '&f&lMochila de Cuarzo'
+    lore:
+      - '&7Tier 9 &8· &e180 slots &8· &b7 mejoras &8· &d4 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fCuarzo de Inframundo &e%checkitem_amount_mat:QUARTZ%&7/&e8'
+      - '&8» &fMochila de Amatista &e%checkitem_amount_namecontains:Amethyst Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        cuarzo:
+          type: has item
+          material: QUARTZ
+          amount: 8
+          deny_commands:
+            - '[message] &cFalta Cuarzo &8(&e%checkitem_amount_mat:QUARTZ%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_amatista:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Amethyst Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Amatista'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% quartz 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"amethyst_backpack"}}] 1'
+      - '[player] cp give quartz_backpack %player_name% 1'
+      - '[message] &aObtuviste la &f&lMochila de Cuarzo&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE PRISMARINA
+  # ====================
+  prismarine_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/lime
+    model_data_component:
+      floats: [100906]
+    slot: 18
+    display_name: '&3&lMochila de Prismarina'
+    lore:
+      - '&7Tier 10 &8· &e198 slots &8· &b8 mejoras &8· &d5 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fCristales de Prismarina &e%checkitem_amount_mat:PRISMARINE_CRYSTALS%&7/&e8'
+      - '&8» &fMochila de Cuarzo &e%checkitem_amount_namecontains:Quartz Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        prismarina:
+          type: has item
+          material: PRISMARINE_CRYSTALS
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Cristales de Prismarina &8(&e%checkitem_amount_mat:PRISMARINE_CRYSTALS%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_cuarzo:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Quartz Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Cuarzo'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% prismarine_crystals 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"quartz_backpack"}}] 1'
+      - '[player] cp give prismarine_backpack %player_name% 1'
+      - '[message] &aObtuviste la &3&lMochila de Prismarina&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE ECO
+  # ====================
+  echo_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/green
+    model_data_component:
+      floats: [100606]
+    slot: 19
+    display_name: '&9&lMochila de Eco'
+    lore:
+      - '&7Tier 11 &8· &e216 slots &8· &b8 mejoras &8· &d5 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fFragmento de Eco &e%checkitem_amount_mat:ECHO_SHARD%&7/&e4'
+      - '&8» &fCatalizador de Sculk &e%checkitem_amount_mat:SCULK_CATALYST%&7/&e1'
+      - '&8» &fBrújula de Recuperación &e%checkitem_amount_mat:RECOVERY_COMPASS%&7/&e2'
+      - '&8» &fAullador de Sculk &e%checkitem_amount_mat:SCULK_SHRIEKER%&7/&e1'
+      - '&8» &fMochila de Prismarina &e%checkitem_amount_namecontains:Prismarine Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        eco:
+          type: has item
+          material: ECHO_SHARD
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Fragmentos de Eco &8(&e%checkitem_amount_mat:ECHO_SHARD%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        catalizador:
+          type: has item
+          material: SCULK_CATALYST
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Catalizador de Sculk'
+            - '[sound] ENTITY_VILLAGER_NO'
+        brujula:
+          type: has item
+          material: RECOVERY_COMPASS
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Brújulas de Recuperación &8(&e%checkitem_amount_mat:RECOVERY_COMPASS%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        chillador:
+          type: has item
+          material: SCULK_SHRIEKER
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Aullador de Sculk'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_prismarina:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Prismarine Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Prismarina'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% echo_shard 4'
+      - '[console] minecraft:clear %player_name% sculk_catalyst 1'
+      - '[console] minecraft:clear %player_name% recovery_compass 2'
+      - '[console] minecraft:clear %player_name% sculk_shrieker 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"prismarine_backpack"}}] 1'
+      - '[player] cp give echo_backpack %player_name% 1'
+      - '[message] &aObtuviste la &9&lMochila de Eco&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE ENDER
+  # ====================
+  ender_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    model_data_component:
+      floats: [100106]
+    slot: 20
+    display_name: '&5&lMochila de Ender'
+    lore:
+      - '&7Tier 12 &8· &e243 slots &8· &b8 mejoras &8· &d6 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fOjo de Ender &e%checkitem_amount_mat:ENDER_EYE%&7/&e4'
+      - '&8» &fCofre de Ender &e%checkitem_amount_mat:ENDER_CHEST%&7/&e4'
+      - '&8» &fMochila de Eco &e%checkitem_amount_namecontains:Echo Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        ojo:
+          type: has item
+          material: ENDER_EYE
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Ojos de Ender &8(&e%checkitem_amount_mat:ENDER_EYE%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cofre_ender:
+          type: has item
+          material: ENDER_CHEST
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Cofres de Ender &8(&e%checkitem_amount_mat:ENDER_CHEST%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_eco:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Echo Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Eco'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ender_eye 4'
+      - '[console] minecraft:clear %player_name% ender_chest 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"echo_backpack"}}] 1'
+      - '[player] cp give ender_backpack %player_name% 1'
+      - '[message] &aObtuviste la &5&lMochila de Ender&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE DRAGÓN
+  # ====================
+  dragon_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    model_data_component:
+      floats: [100106]
+    slot: 21
+    display_name: '&5&lMochila de Dragón'
+    lore:
+      - '&7Tier 13 &8· &e270 slots &8· &b9 mejoras &8· &d6 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fAliento de Dragón &e%checkitem_amount_mat:DRAGON_BREATH%&7/&e4'
+      - '&8» &fCabeza de Dragón &e%checkitem_amount_mat:DRAGON_HEAD%&7/&e1'
+      - '&8» &fCristal del End &e%checkitem_amount_mat:END_CRYSTAL%&7/&e2'
+      - '&8» &fÉlitros &e%checkitem_amount_mat:ELYTRA%&7/&e1'
+      - '&8» &fMochila de Ender &e%checkitem_amount_namecontains:Ender Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        aliento:
+          type: has item
+          material: DRAGON_BREATH
+          amount: 4
+          deny_commands:
+            - '[message] &cFalta Aliento de Dragón &8(&e%checkitem_amount_mat:DRAGON_BREATH%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cabeza:
+          type: has item
+          material: DRAGON_HEAD
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Cabeza de Dragón'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cristal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Cristales del End &8(&e%checkitem_amount_mat:END_CRYSTAL%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        elitros:
+          type: has item
+          material: ELYTRA
+          amount: 1
+          deny_commands:
+            - '[message] &cFaltan Élitros'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_ender:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Ender Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Ender'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% dragon_breath 4'
+      - '[console] minecraft:clear %player_name% dragon_head 1'
+      - '[console] minecraft:clear %player_name% end_crystal 2'
+      - '[console] minecraft:clear %player_name% elytra 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"ender_backpack"}}] 1'
+      - '[player] cp give dragon_backpack %player_name% 1'
+      - '[message] &aObtuviste la &5&lMochila de Dragón&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DE FARO
+  # ====================
+  beacon_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/cyan
+    model_data_component:
+      floats: [100406]
+    slot: 22
+    display_name: '&f&lMochila de Faro'
+    lore:
+      - '&7Tier 14 &8· &e324 slots &8· &b9 mejoras &8· &d8 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fObsidiana &e%checkitem_amount_mat:OBSIDIAN%&7/&e4'
+      - '&8» &fEstrella de Inframundo &e%checkitem_amount_mat:NETHER_STAR%&7/&e2'
+      - '&8» &fFaro &e%checkitem_amount_mat:BEACON%&7/&e2'
+      - '&8» &fMochila de Dragón &e%checkitem_amount_namecontains:Dragon Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        obsidiana:
+          type: has item
+          material: OBSIDIAN
+          amount: 4
+          deny_commands:
+            - '[message] &cFalta Obsidiana &8(&e%checkitem_amount_mat:OBSIDIAN%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        estrella:
+          type: has item
+          material: NETHER_STAR
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Estrellas del Nether &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        faro:
+          type: has item
+          material: BEACON
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Faros &8(&e%checkitem_amount_mat:BEACON%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_dragon:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Dragon Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Dragón'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% obsidian 4'
+      - '[console] minecraft:clear %player_name% nether_star 2'
+      - '[console] minecraft:clear %player_name% beacon 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"dragon_backpack"}}] 1'
+      - '[player] cp give beacon_backpack %player_name% 1'
+      - '[message] &aObtuviste la &f&lMochila de Faro&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA ANCESTRAL
+  # ====================
+  ancient_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/brown
+    model_data_component:
+      floats: [100306]
+    slot: 23
+    display_name: '&6&l&lMochila Ancestral'
+    lore:
+      - '&7Tier 15 &8· &e378 slots &8· &b9 mejoras &8· &d9 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fEscombros Ancestrales &e%checkitem_amount_mat:ANCIENT_DEBRIS%&7/&e8'
+      - '&8» &fMochila de Faro &e%checkitem_amount_namecontains:Beacon Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        escombros:
+          type: has item
+          material: ANCIENT_DEBRIS
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Escombros Ancestrales &8(&e%checkitem_amount_mat:ANCIENT_DEBRIS%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_faro:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Beacon Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila de Faro'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% ancient_debris 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"beacon_backpack"}}] 1'
+      - '[player] cp give ancient_backpack %player_name% 1'
+      - '[message] &aObtuviste la &8&lMochila Ancestral&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA MAESTRA
+  # ====================
+  master_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/purple
+    model_data_component:
+      floats: [101306]
+    slot: 24
+    display_name: '&6&lMochila Maestra'
+    lore:
+      - '&7Tier 16 &8· &e432 slots &8· &b9 mejoras &8· &d10 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e6'
+      - '&8» &fCaja Shulker &e%checkitem_amount_mat:SHULKER_BOX%&7/&e2'
+      - '&8» &fMochila Ancestral &e%checkitem_amount_namecontains:Ancient Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        netherita:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 6
+          deny_commands:
+            - '[message] &cFaltan Bloques de Netherita &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e6&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        shulker:
+          type: has item
+          material: SHULKER_BOX
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Cajas Shulker &8(&e%checkitem_amount_mat:SHULKER_BOX%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_ancestral:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Ancient Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila Ancestral'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 6'
+      - '[console] minecraft:clear %player_name% shulker_box 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"ancient_backpack"}}] 1'
+      - '[player] cp give master_backpack %player_name% 1'
+      - '[message] &aObtuviste la &6&lMochila Maestra&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA SUPREMA
+  # ====================
+  supreme_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/pink
+    model_data_component:
+      floats: [101206]
+    slot: 25
+    display_name: '&c&lMochila Suprema'
+    lore:
+      - '&7Tier 17 &8· &e486 slots &8· &b9 mejoras &8· &d11 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fCristal del End &e%checkitem_amount_mat:END_CRYSTAL%&7/&e6'
+      - '&8» &fObsidiana Llorosa &e%checkitem_amount_mat:CRYING_OBSIDIAN%&7/&e2'
+      - '&8» &fMochila Maestra &e%checkitem_amount_namecontains:Master Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        cristal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 6
+          deny_commands:
+            - '[message] &cFaltan Cristales del End &8(&e%checkitem_amount_mat:END_CRYSTAL%&8/&e6&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        obsidiana:
+          type: has item
+          material: CRYING_OBSIDIAN
+          amount: 2
+          deny_commands:
+            - '[message] &cFalta Obsidiana Llorosa &8(&e%checkitem_amount_mat:CRYING_OBSIDIAN%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_maestra:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Master Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila Maestra'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% end_crystal 6'
+      - '[console] minecraft:clear %player_name% crying_obsidian 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"master_backpack"}}] 1'
+      - '[player] cp give supreme_backpack %player_name% 1'
+      - '[message] &aObtuviste la &c&lMochila Suprema&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA MÍTICA
+  # ====================
+  mythic_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/yellow
+    model_data_component:
+      floats: [101606]
+    slot: 26
+    display_name: '&d&lMochila Mítica'
+    lore:
+      - '&7Tier 18 &8· &e540 slots &8· &b9 mejoras &8· &d12 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fTótem de la Inmortalidad &e%checkitem_amount_mat:TOTEM_OF_UNDYING%&7/&e8'
+      - '&8» &fMochila Suprema &e%checkitem_amount_namecontains:Supreme Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        totem:
+          type: has item
+          material: TOTEM_OF_UNDYING
+          amount: 8
+          deny_commands:
+            - '[message] &cFaltan Tótems de la Inmortalidad &8(&e%checkitem_amount_mat:TOTEM_OF_UNDYING%&8/&e8&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_suprema:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Supreme Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila Suprema'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% totem_of_undying 8'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"supreme_backpack"}}] 1'
+      - '[player] cp give mythic_backpack %player_name% 1'
+      - '[message] &aObtuviste la &d&lMochila Mítica&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DIVINA
+  # ====================
+  divine_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/light_gray
+    model_data_component:
+      floats: [100806]
+    slot: 30
+    display_name: '&b&lMochila Divina'
+    lore:
+      - '&7Tier 19 &8· &e594 slots &8· &b9 mejoras &8· &d14 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fEstrella de Inframundo &e%checkitem_amount_mat:NETHER_STAR%&7/&e4'
+      - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e4'
+      - '&8» &fMochila Mítica &e%checkitem_amount_namecontains:Mythic Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        estrella:
+          type: has item
+          material: NETHER_STAR
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Estrellas del Nether &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        netherita:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Bloques de Netherita &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_mitica:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Mythic Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila Mítica'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% nether_star 4'
+      - '[console] minecraft:clear %player_name% netherite_block 4'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"mythic_backpack"}}] 1'
+      - '[player] cp give divine_backpack %player_name% 1'
+      - '[message] &aObtuviste la &b&lMochila Divina&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA INFINITA
+  # ====================
+  infinity_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/gray
+    model_data_component:
+      floats: [100506]
+    slot: 31
+    display_name: '&6&lMochila Infinita'
+    lore:
+      - '&7Tier 20 &8· &e648 slots &8· &b9 mejoras &8· &d15 páginas'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e4'
+      - '&8» &fEstrella de Inframundo &e%checkitem_amount_mat:NETHER_STAR%&7/&e2'
+      - '&8» &fHuevo de Dragón &e%checkitem_amount_mat:DRAGON_EGG%&7/&e2'
+      - '&8» &fMochila Divina &e%checkitem_amount_namecontains:Divine Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        netherita:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 4
+          deny_commands:
+            - '[message] &cFaltan Bloques de Netherita &8(&e%checkitem_amount_mat:NETHERITE_BLOCK%&8/&e4&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        estrella:
+          type: has item
+          material: NETHER_STAR
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Estrellas del Nether &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        huevo:
+          type: has item
+          material: DRAGON_EGG
+          amount: 2
+          deny_commands:
+            - '[message] &cFaltan Huevos de Dragón &8(&e%checkitem_amount_mat:DRAGON_EGG%&8/&e2&8)'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_divina:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Divine Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila Divina'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 4'
+      - '[console] minecraft:clear %player_name% nether_star 2'
+      - '[console] minecraft:clear %player_name% dragon_egg 2'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"divine_backpack"}}] 1'
+      - '[player] cp give infinity_backpack %player_name% 1'
+      - '[message] &aObtuviste la &6&lMochila Infinita&a.'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA DEFINITIVA
+  # ====================
+  ultimate_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/black
+    model_data_component:
+      floats: [100106]
+    slot: 32
+    display_name: '&6&l&lMochila Definitiva'
+    lore:
+      - '&7Tier 21 &8· &e765 slots &8· &b9 mejoras &8· &d17 páginas'
+      - '&7La mochila más grande del servidor'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e1'
+      - '&8» &fEstrella de Inframundo &e%checkitem_amount_mat:NETHER_STAR%&7/&e1'
+      - '&8» &fCristal del End &e%checkitem_amount_mat:END_CRYSTAL%&7/&e1'
+      - '&8» &fCabeza de Dragón &e%checkitem_amount_mat:DRAGON_HEAD%&7/&e1'
+      - '&8» &fCaja Shulker &e%checkitem_amount_mat:SHULKER_BOX%&7/&e1'
+      - '&8» &fTótem de la Inmortalidad &e%checkitem_amount_mat:TOTEM_OF_UNDYING%&7/&e1'
+      - '&8» &fFaro &e%checkitem_amount_mat:BEACON%&7/&e1'
+      - '&8» &fHuevo de Dragón &e%checkitem_amount_mat:DRAGON_EGG%&7/&e1'
+      - '&8» &fMochila Infinita &e%checkitem_amount_namecontains:Infinity Backpack%&7/&e1'
+      - ''
+      - '&c⚠ &7Vacia la mochila antes del upgrade'
+      - '&7Los items dentro se perderan al reemplazarla.'
+      - ''
+      - '&aPresiona para craftear'
+    left_click_requirement:
+      requirements:
+        netherita:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Bloque de Netherita'
+            - '[sound] ENTITY_VILLAGER_NO'
+        estrella:
+          type: has item
+          material: NETHER_STAR
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Estrella de Inframundo'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cristal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Cristal del End'
+            - '[sound] ENTITY_VILLAGER_NO'
+        cabeza:
+          type: has item
+          material: DRAGON_HEAD
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Cabeza de Dragón'
+            - '[sound] ENTITY_VILLAGER_NO'
+        shulker:
+          type: has item
+          material: SHULKER_BOX
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta la Caja Shulker'
+            - '[sound] ENTITY_VILLAGER_NO'
+        totem:
+          type: has item
+          material: TOTEM_OF_UNDYING
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Tótem de la Inmortalidad'
+            - '[sound] ENTITY_VILLAGER_NO'
+        faro:
+          type: has item
+          material: BEACON
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Faro'
+            - '[sound] ENTITY_VILLAGER_NO'
+        huevo:
+          type: has item
+          material: DRAGON_EGG
+          amount: 1
+          deny_commands:
+            - '[message] &cFalta el Huevo de Dragón'
+            - '[sound] ENTITY_VILLAGER_NO'
+        mochila_infinita:
+          type: javascript
+          expression: '%checkitem_amount_namecontains:Infinity Backpack% >= 1'
+          deny_commands:
+            - '[message] &cFalta la Mochila Infinita'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% netherite_block 1'
+      - '[console] minecraft:clear %player_name% nether_star 1'
+      - '[console] minecraft:clear %player_name% end_crystal 1'
+      - '[console] minecraft:clear %player_name% dragon_head 1'
+      - '[console] minecraft:clear %player_name% shulker_box 1'
+      - '[console] minecraft:clear %player_name% totem_of_undying 1'
+      - '[console] minecraft:clear %player_name% beacon 1'
+      - '[console] minecraft:clear %player_name% dragon_egg 1'
+      - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"infinity_backpack"}}] 1'
+      - '[player] cp give ultimate_backpack %player_name% 1'
+      - '[message] &aObtuviste la &6&l&lMochila Definitiva&a. &7¡La mejor mochila del servidor!'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # PANEL MATERIALES MOCHILAS (1/2)
+  # ====================
+  panel_mat_backpacks_1:
+    material: CHEST
+    slot: 44
+    display_name: '&6Materiales de Mochilas &7(1/2)'
+    lore:
+      - '&8» &fHilo: &e%checkitem_amount_mat:STRING%'
+      - '&8» &fCuero: &e%checkitem_amount_mat:LEATHER%'
+      - '&8» &fCofre: &e%checkitem_amount_mat:CHEST%'
+      - '&8» &fLingote de Cobre: &e%checkitem_amount_mat:COPPER_INGOT%'
+      - '&8» &fLingote de Hierro: &e%checkitem_amount_mat:IRON_INGOT%'
+      - '&8» &fLingote de Oro: &e%checkitem_amount_mat:GOLD_INGOT%'
+      - '&8» &fDiamante: &e%checkitem_amount_mat:DIAMOND%'
+      - '&8» &fLingote de Netherita: &e%checkitem_amount_mat:NETHERITE_INGOT%'
+      - '&8» &fPlantilla: &e%checkitem_amount_mat:NETHERITE_UPGRADE_SMITHING_TEMPLATE%'
+      - '&8» &fEsmeralda: &e%checkitem_amount_mat:EMERALD%'
+      - '&8» &fFragmento de Amatista: &e%checkitem_amount_mat:AMETHYST_SHARD%'
+      - '&8» &fCuarzo: &e%checkitem_amount_mat:QUARTZ%'
+      - '&8» &fCristales de Prismarina: &e%checkitem_amount_mat:PRISMARINE_CRYSTALS%'
+      - ''
+      - '&ePresiona para actualizar'
+    left_click_commands:
+      - '[refresh]'
+
+  # ====================
+  # PANEL MATERIALES MOCHILAS (2/2)
+  # ====================
+  panel_mat_backpacks_2:
+    material: CHEST
+    slot: 45
+    display_name: '&6Materiales de Mochilas &7(2/2)'
+    lore:
+      - '&8» &fFragmento de Eco: &e%checkitem_amount_mat:ECHO_SHARD%'
+      - '&8» &fOjo de Ender: &e%checkitem_amount_mat:ENDER_EYE%'
+      - '&8» &fAliento de Dragón: &e%checkitem_amount_mat:DRAGON_BREATH%'
+      - '&8» &fÉlitros(Elytra): &e%checkitem_amount_mat:ELYTRA%'
+      - '&8» &fObsidiana: &e%checkitem_amount_mat:OBSIDIAN%'
+      - '&8» &fFaro: &e%checkitem_amount_mat:BEACON%'
+      - '&8» &fEstrella de Inframundo: &e%checkitem_amount_mat:NETHER_STAR%'
+      - '&8» &fEscombros ancestrales: &e%checkitem_amount_mat:ANCIENT_DEBRIS%'
+      - '&8» &fBloque de Netherita: &e%checkitem_amount_mat:NETHERITE_BLOCK%'
+      - '&8» &fCristal del End: &e%checkitem_amount_mat:END_CRYSTAL%'
+      - '&8» &fTótem de la Inmortalidad: &e%checkitem_amount_mat:TOTEM_OF_UNDYING%'
+      - '&8» &fHuevo de Dragón: &e%checkitem_amount_mat:DRAGON_EGG%'
+      - ''
+      - '&ePresiona para actualizar'
+    left_click_commands:
+      - '[refresh]'
+
+  # ====================
+  # SIGUIENTE PÁGINA
+  # ====================
+  next_page:
+    material: ARROW
+    slot: 53
+    display_name: '&a&l▶ Página 2: Mejoras'
+    lore:
+      - '&7Ver las mejoras y upgrades'
+      - '&7disponibles para tu mochila.'
+      - ''
+      - '&aClick para continuar'
+    left_click_commands:
+      - '[sound] UI_BUTTON_CLICK'
+      - '[openguimenu] probablybackpacks_menu_page2'
