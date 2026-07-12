@@ -2,7 +2,7 @@
 
 [English](README.md) | **Español**
 
-Un paquete de configuración para **ProbablyBackpacks** que extiende la progresión de mochilas por defecto a **21 niveles de mochila**, con recetas de crafteo balanceadas y una interfaz **DeluxeMenus** totalmente integrada.
+Un paquete de configuración para **ProbablyBackpacks** que extiende la progresión de mochilas por defecto a **21 niveles de mochila + Mochila Legendaria**, con recetas de crafteo balanceadas y una interfaz **DeluxeMenus** totalmente integrada.
 
 > **Nota**
 > Este repositorio **no** es un plugin ni un fork de ProbablyBackpacks. Es un paquete de configuración hecho por la comunidad que extiende el plugin original.
@@ -20,9 +20,11 @@ Craftea mochilas y mejoras directamente desde la GUI.
 
 # Características
 
-## 21 Niveles de Mochila
+## 21 Niveles + Mochila Legendaria
 
-Esta expansión extiende la progresión por defecto de ProbablyBackpacks a un total de **21 niveles de mochila**, ofreciendo una progresión completa desde el early-game hasta el end-game.
+Esta expansión extiende la progresión por defecto de ProbablyBackpacks a un total de **21 niveles de mochila**, culminando con una **Mochila Legendaria** única que puede fabricarse utilizando algunos de los objetos más raros del juego.
+
+La Mochila Legendaria no forma parte de la progresión normal, sino que representa un objetivo opcional para los jugadores que buscan la solución de almacenamiento definitiva.
 
 La capacidad de las mochilas va desde **27 slots** hasta **765 slots**, permitiendo a los jugadores desbloquear gradualmente más almacenamiento a medida que avanzan.
 
@@ -299,6 +301,10 @@ La progresión completa de mochilas se muestra a continuación:
 > **Nota**
 > Cada nivel de mochila requiere la mochila anterior como parte de su receta de crafteo, creando una progresión natural desde el almacenamiento de early-game hasta el de end-game.
 
+> **Mochila Legendaria**
+> 
+> Además de la progresión principal, esta expansión incluye una Mochila Legendaria única con 1080 slots, fabricable mediante una receta especial que requiere algunos de los materiales más raros de Minecraft.
+
 ---
 
 # Recetas Personalizadas
@@ -462,6 +468,18 @@ A continuación se muestran todas las recetas de crafteo incluidas en esta expan
 &nbsp;
 </td>
 </tr>
+
+<tr>
+<td width="50%" align="center">
+<a href="images/es/backpacks-crafting/Mochila_legendaria.webp">
+<img src="images/es/backpacks-crafting/Mochila_legendaria.webp" alt="Mochila Legendaria">
+</a>
+</td>
+<td width="50%" align="center">
+&nbsp;
+</td>
+</tr>
+
 </table>
 
 > 💡 **Tip:** Haz clic en cualquier imagen para verla en resolución completa.

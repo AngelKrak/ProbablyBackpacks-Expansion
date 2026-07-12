@@ -2,7 +2,7 @@
 
 **English** | [Español](README.es.md)
 
-A configuration pack for **ProbablyBackpacks** that extends the default backpack progression to **21 backpack tiers**, featuring balanced crafting recipes and a fully integrated **DeluxeMenus** interface.
+A configuration pack for **ProbablyBackpacks** that extends the default backpack progression to **21 backpack tiers + a unique Legendary Backpack**, featuring balanced crafting recipes and a fully integrated **DeluxeMenus** interface.
 
 > **Note**
 > This repository is **not** a plugin or a fork of ProbablyBackpacks. It is a community-made configuration pack that extends the original plugin.
@@ -20,9 +20,11 @@ Craft backpacks & upgrades directly from the GUI.
 
 # Features
 
-## 21 Backpack Tiers
+## 21 Backpack Tiers + Legendary Backpack
 
-This expansion extends the default ProbablyBackpacks progression to a total of **21 backpack tiers**, providing a complete progression from early-game to end-game.
+This expansion extends ProbablyBackpacks' default progression to a total of **21 backpack tiers**, culminating in a unique **Legendary Backpack** that can be crafted using some of the rarest items in the game.
+
+The Legendary Backpack is not part of the normal progression. Instead, it serves as an optional end-game goal for players seeking the ultimate storage solution.
 
 Backpack capacities range from **27 slots** up to **765 slots**, allowing players to gradually unlock larger storage as they progress.
 
@@ -299,6 +301,10 @@ The complete backpack progression is shown below:
 > **Note**
 > Each backpack tier requires the previous backpack as part of its crafting recipe, creating a natural progression from early-game to end-game storage.
 
+> **Legendary Backpack**
+>
+> In addition to the main progression, this expansion includes a unique **Legendary Backpack** with **1080 slots**, craftable through a special recipe that requires some of Minecraft's rarest materials.
+
 ---
 
 # Custom Recipes
@@ -462,6 +468,18 @@ Below are all crafting recipes included in this expansion:
 &nbsp;
 </td>
 </tr>
+
+<tr>
+<td width="50%" align="center">
+<a href="images/en/backpacks-crafting/Backpack_legendary.png">
+<img src="images/en/backpacks-crafting/Backpack_legendary.png" alt="Legendary Backpack">
+</a>
+</td>
+<td width="50%" align="center">
+&nbsp;
+</td>
+</tr>
+
 </table>
 
 > 💡 **Tip:** Click any image to view it in full resolution.
