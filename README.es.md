@@ -465,18 +465,9 @@ A continuación se muestran todas las recetas de crafteo incluidas en esta expan
 </a>
 </td>
 <td width="50%" align="center">
-&nbsp;
-</td>
-</tr>
-
-<tr>
-<td width="50%" align="center">
 <a href="images/es/backpacks-crafting/Mochila_legendaria.webp">
 <img src="images/es/backpacks-crafting/Mochila_legendaria.webp" alt="Mochila Legendaria">
 </a>
-</td>
-<td width="50%" align="center">
-&nbsp;
 </td>
 </tr>
 

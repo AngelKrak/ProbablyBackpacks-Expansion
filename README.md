@@ -465,18 +465,9 @@ Below are all crafting recipes included in this expansion:
 </a>
 </td>
 <td width="50%" align="center">
-&nbsp;
-</td>
-</tr>
-
-<tr>
-<td width="50%" align="center">
 <a href="images/en/backpacks-crafting/Backpack_legendary.png">
 <img src="images/en/backpacks-crafting/Backpack_legendary.png" alt="Legendary Backpack">
 </a>
-</td>
-<td width="50%" align="center">
-&nbsp;
 </td>
 </tr>
 
