@@ -126,6 +126,7 @@ Probado con:
 - DeluxeMenus v1.14.1
 - PlaceholderAPI v2.12.3
 - CheckItem Expansion v2.7.9
+- Player Expansion v2.0.9
 
 ---
 
@@ -145,13 +146,15 @@ Si planeas usar la GUI de DeluxeMenus incluida, también debes instalar:
 
 - PlaceholderAPI
 - CheckItem PlaceholderAPI Expansion
+- Player PlaceholderAPI Expansion
 
-Sin la expansión CheckItem, la validación de crafteo dentro de la GUI no funcionará correctamente.
+Sin la expansión CheckItem y Player, la validación de crafteo dentro de la GUI no funcionará correctamente.
 
 Puedes instalarla usando:
 
 ```text
 /papi ecloud download CheckItem
+/papi ecloud download Player
 /papi reload
 ```
 
@@ -536,7 +539,7 @@ o reiniciar el servidor.
 - CuriosPaper
 - DeluxeMenus
 - PlaceholderAPI
-- CheckItem Expansion
+- CheckItem & Player Expansion
 
 ## Paquete de Expansión
 
