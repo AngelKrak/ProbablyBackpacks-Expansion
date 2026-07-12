@@ -319,12 +319,11 @@ backpacks:
     recipe:
       shape:
       - NSN
-      - IBI
+      - SBS
       - NSN
       ingredients:
         N: NETHERITE_BLOCK
         S: NETHER_STAR
-        I: DRAGON_EGG
         B: p_backpack:divine_backpack
     upgrade_slots: 9
 
@@ -348,5 +347,28 @@ backpacks:
         H: SHULKER_BOX
         T: TOTEM_OF_UNDYING
         W: BEACON
-        I: DRAGON_EGG
+        I: ELYTRA
+    upgrade_slots: 9
+
+  legendary_backpack:
+    name: §6§lLegendary Backpack
+    item: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/yellow
+    custom_model_data: 101606
+    slots: 1080
+    recipe:
+      shape:
+      - DNH
+      - SCE
+      - BAG
+      ingredients:
+        D: DRAGON_EGG
+        N: NETHERITE_BLOCK
+        H: HEAVY_CORE
+        S: NETHER_STAR
+        C: CONDUIT
+        E: END_CRYSTAL
+        B: DRAGON_BREATH
+        A: ENCHANTED_GOLDEN_APPLE
+        G: BEACON
     upgrade_slots: 9

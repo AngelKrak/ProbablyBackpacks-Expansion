@@ -1081,8 +1081,7 @@ items:
       - ''
       - '&6You need'
       - '&8» &fNetherite Block &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e4'
-      - '&8» &fNether Star &e%checkitem_amount_mat:NETHER_STAR%&7/&e2'
-      - '&8» &fDragon Egg &e%checkitem_amount_mat:DRAGON_EGG%&7/&e2'
+      - '&8» &fNether Star &e%checkitem_amount_mat:NETHER_STAR%&7/&e4'
       - '&8» &fDivine Backpack &e%checkitem_amount_namecontains:Divine Backpack%&7/&e1'
       - ''
       - '&c⚠ &7Empty the backpack before upgrading'
@@ -1101,16 +1100,9 @@ items:
         star:
           type: has item
           material: NETHER_STAR
-          amount: 2
+          amount: 4
           deny_commands:
-            - '[message] &cMissing Nether Stars &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e2&8)'
-            - '[sound] ENTITY_VILLAGER_NO'
-        egg:
-          type: has item
-          material: DRAGON_EGG
-          amount: 2
-          deny_commands:
-            - '[message] &cMissing Dragon Eggs &8(&e%checkitem_amount_mat:DRAGON_EGG%&8/&e2&8)'
+            - '[message] &cMissing Nether Stars &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e4&8)'
             - '[sound] ENTITY_VILLAGER_NO'
         divine_backpack:
           type: javascript
@@ -1122,8 +1114,7 @@ items:
         - '[sound] ENTITY_VILLAGER_NO'
     left_click_commands:
       - '[console] minecraft:clear %player_name% netherite_block 4'
-      - '[console] minecraft:clear %player_name% nether_star 2'
-      - '[console] minecraft:clear %player_name% dragon_egg 2'
+      - '[console] minecraft:clear %player_name% nether_star 4'
       - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"divine_backpack"}}] 1'
       - '[player] cp give infinity_backpack %player_name% 1'
       - '[message] &aYou obtained the &6&lInfinity Backpack&a.'
@@ -1152,7 +1143,7 @@ items:
       - '&8» &fShulker Box &e%checkitem_amount_mat:SHULKER_BOX%&7/&e1'
       - '&8» &fTotem of Undying &e%checkitem_amount_mat:TOTEM_OF_UNDYING%&7/&e1'
       - '&8» &fBeacon &e%checkitem_amount_mat:BEACON%&7/&e1'
-      - '&8» &fDragon Egg &e%checkitem_amount_mat:DRAGON_EGG%&7/&e1'
+      - '&8» &fElytra &e%checkitem_amount_mat:ELYTRA%&7/&e1'
       - '&8» &fInfinity Backpack &e%checkitem_amount_namecontains:Infinity Backpack%&7/&e1'
       - ''
       - '&c⚠ &7Empty the backpack before upgrading'
@@ -1210,12 +1201,12 @@ items:
           deny_commands:
             - '[message] &cMissing the Beacon'
             - '[sound] ENTITY_VILLAGER_NO'
-        egg:
+        elytra:
           type: has item
-          material: DRAGON_EGG
+          material: ELYTRA
           amount: 1
           deny_commands:
-            - '[message] &cMissing the Dragon Egg'
+            - '[message] &cMissing Elytra'
             - '[sound] ENTITY_VILLAGER_NO'
         infinity_backpack:
           type: javascript
@@ -1233,10 +1224,119 @@ items:
       - '[console] minecraft:clear %player_name% shulker_box 1'
       - '[console] minecraft:clear %player_name% totem_of_undying 1'
       - '[console] minecraft:clear %player_name% beacon 1'
-      - '[console] minecraft:clear %player_name% dragon_egg 1'
+      - '[console] minecraft:clear %player_name% elytra 1'
       - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"infinity_backpack"}}] 1'
       - '[player] cp give ultimate_backpack %player_name% 1'
       - '[message] &aYou obtained the &6&l&lUltimate Backpack&a. &7The best backpack on the server!'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # LEGENDARY BACKPACK
+  # ====================
+  legendary_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/yellow
+    model_data_component:
+      floats: [101606]
+    slot: 36
+    display_name: '&6&lLegendary Backpack'
+    lore:
+      - '&6✦ &eUnique Backpack &6✦'
+      - '&e1080 slots &8· &b9 upgrades &8· &d24 pages'
+      - '&7Forged from the rarest relics in existence'
+      - ''
+      - '&6You need'
+      - '&8» &fDragon Egg &e%checkitem_amount_mat:DRAGON_EGG%&7/&e1'
+      - '&8» &fNetherite Block &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e1'
+      - '&8» &fHeavy Core &e%checkitem_amount_mat:HEAVY_CORE%&7/&e1'
+      - '&8» &fNether Star &e%checkitem_amount_mat:NETHER_STAR%&7/&e1'
+      - '&8» &fConduit &e%checkitem_amount_mat:CONDUIT%&7/&e1'
+      - '&8» &fEnd Crystal &e%checkitem_amount_mat:END_CRYSTAL%&7/&e1'
+      - '&8» &fDragon Breath &e%checkitem_amount_mat:DRAGON_BREATH%&7/&e1'
+      - '&8» &fEnchanted Golden Apple &e%checkitem_amount_mat:ENCHANTED_GOLDEN_APPLE%&7/&e1'
+      - '&8» &fBeacon &e%checkitem_amount_mat:BEACON%&7/&e1'
+      - ''
+      - '&aClick to craft'
+    left_click_requirement:
+      requirements:
+        dragon_egg:
+          type: has item
+          material: DRAGON_EGG
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Dragon Egg'
+            - '[sound] ENTITY_VILLAGER_NO'
+        netherite:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Netherite Block'
+            - '[sound] ENTITY_VILLAGER_NO'
+        heavy_core:
+          type: has item
+          material: HEAVY_CORE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Heavy Core'
+            - '[sound] ENTITY_VILLAGER_NO'
+        star:
+          type: has item
+          material: NETHER_STAR
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Nether Star'
+            - '[sound] ENTITY_VILLAGER_NO'
+        conduit:
+          type: has item
+          material: CONDUIT
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Conduit'
+            - '[sound] ENTITY_VILLAGER_NO'
+        crystal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the End Crystal'
+            - '[sound] ENTITY_VILLAGER_NO'
+        breath:
+          type: has item
+          material: DRAGON_BREATH
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Dragon Breath'
+            - '[sound] ENTITY_VILLAGER_NO'
+        gapple:
+          type: has item
+          material: ENCHANTED_GOLDEN_APPLE
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Enchanted Golden Apple'
+            - '[sound] ENTITY_VILLAGER_NO'
+        beacon:
+          type: has item
+          material: BEACON
+          amount: 1
+          deny_commands:
+            - '[message] &cMissing the Beacon'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% dragon_egg 1'
+      - '[console] minecraft:clear %player_name% netherite_block 1'
+      - '[console] minecraft:clear %player_name% heavy_core 1'
+      - '[console] minecraft:clear %player_name% nether_star 1'
+      - '[console] minecraft:clear %player_name% conduit 1'
+      - '[console] minecraft:clear %player_name% end_crystal 1'
+      - '[console] minecraft:clear %player_name% dragon_breath 1'
+      - '[console] minecraft:clear %player_name% enchanted_golden_apple 1'
+      - '[console] minecraft:clear %player_name% beacon 1'
+      - '[player] cp give legendary_backpack %player_name% 1'
+      - '[message] &aYou obtained the &6&lLegendary Backpack&a. &7The most legendary backpack on the server!'
       - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
       - '[refresh]'
 

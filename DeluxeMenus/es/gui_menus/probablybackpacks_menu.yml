@@ -44,7 +44,7 @@ items:
     slot: 4
     display_name: '&e&lSistema de Mochilas'
     lore:
-      - '&6Mochilas &8(21 tiers)'
+      - '&6Mochilas &8(21 Niveles)'
       - '&8» &fCuero &7· Cobre &7· Hierro &7· Oro'
       - '&8» &fDiamante &7· Netherita &7· Esmeralda'
       - '&8» &fAmatista &7· Cuarzo &7· Prismarina'
@@ -80,7 +80,7 @@ items:
     slot: 9
     display_name: '&e&lMochila de Cuero'
     lore:
-      - '&7Tier 1 &8· &e27 slots &8· &b1 mejora &8· &d1 página'
+      - '&7Nivel 1 &8· &e27 slots &8· &b1 mejora &8· &d1 página'
       - ''
       - '&6Necesitas'
       - '&8» &fHilo &e%checkitem_amount_mat:STRING%&7/&e4'
@@ -133,7 +133,7 @@ items:
     slot: 10
     display_name: '&c&lMochila de Cobre'
     lore:
-      - '&7Tier 2 &8· &e45 slots &8· &b2 mejoras &8· &d1 página'
+      - '&7Nivel 2 &8· &e45 slots &8· &b2 mejoras &8· &d1 página'
       - ''
       - '&6Necesitas'
       - '&8» &fLingote de Cobre &e%checkitem_amount_mat:COPPER_INGOT%&7/&e8'
@@ -179,7 +179,7 @@ items:
     slot: 11
     display_name: '&f&lMochila de Hierro'
     lore:
-      - '&7Tier 3 &8· &e54 slots &8· &b3 mejoras &8· &d2 páginas'
+      - '&7Nivel 3 &8· &e54 slots &8· &b3 mejoras &8· &d2 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fLingote de Hierro &e%checkitem_amount_mat:IRON_INGOT%&7/&e8'
@@ -225,7 +225,7 @@ items:
     slot: 12
     display_name: '&6&lMochila de Oro'
     lore:
-      - '&7Tier 4 &8· &e81 slots &8· &b4 mejoras &8· &d2 páginas'
+      - '&7Nivel 4 &8· &e81 slots &8· &b4 mejoras &8· &d2 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fLingote de Oro &e%checkitem_amount_mat:GOLD_INGOT%&7/&e8'
@@ -271,7 +271,7 @@ items:
     slot: 13
     display_name: '&b&lMochila de Diamante'
     lore:
-      - '&7Tier 5 &8· &e108 slots &8· &b5 mejoras &8· &d3 páginas'
+      - '&7Nivel 5 &8· &e108 slots &8· &b5 mejoras &8· &d3 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fDiamante &e%checkitem_amount_mat:DIAMOND%&7/&e8'
@@ -317,7 +317,7 @@ items:
     slot: 14
     display_name: '&5&lMochila de Netherita'
     lore:
-      - '&7Tier 6 &8· &e126 slots &8· &b6 mejoras &8· &d3 páginas'
+      - '&7Nivel 6 &8· &e126 slots &8· &b6 mejoras &8· &d3 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fLingote de Netherita &e%checkitem_amount_mat:NETHERITE_INGOT%&7/&e1'
@@ -372,7 +372,7 @@ items:
     slot: 15
     display_name: '&a&lMochila de Esmeralda'
     lore:
-      - '&7Tier 7 &8· &e144 slots &8· &b7 mejoras &8· &d4 páginas'
+      - '&7Nivel 7 &8· &e144 slots &8· &b7 mejoras &8· &d4 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fEsmeraldas &e%checkitem_amount_mat:EMERALD%&7/&e8'
@@ -418,7 +418,7 @@ items:
     slot: 16
     display_name: '&d&lMochila de Amatista'
     lore:
-      - '&7Tier 8 &8· &e162 slots &8· &b7 mejoras &8· &d4 páginas'
+      - '&7Nivel 8 &8· &e162 slots &8· &b7 mejoras &8· &d4 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fFragmento de Amatista &e%checkitem_amount_mat:AMETHYST_SHARD%&7/&e8'
@@ -464,7 +464,7 @@ items:
     slot: 17
     display_name: '&f&lMochila de Cuarzo'
     lore:
-      - '&7Tier 9 &8· &e180 slots &8· &b7 mejoras &8· &d4 páginas'
+      - '&7Nivel 9 &8· &e180 slots &8· &b7 mejoras &8· &d4 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fCuarzo de Inframundo &e%checkitem_amount_mat:QUARTZ%&7/&e8'
@@ -510,7 +510,7 @@ items:
     slot: 18
     display_name: '&3&lMochila de Prismarina'
     lore:
-      - '&7Tier 10 &8· &e198 slots &8· &b8 mejoras &8· &d5 páginas'
+      - '&7Nivel 10 &8· &e198 slots &8· &b8 mejoras &8· &d5 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fCristales de Prismarina &e%checkitem_amount_mat:PRISMARINE_CRYSTALS%&7/&e8'
@@ -556,7 +556,7 @@ items:
     slot: 19
     display_name: '&9&lMochila de Eco'
     lore:
-      - '&7Tier 11 &8· &e216 slots &8· &b8 mejoras &8· &d5 páginas'
+      - '&7Nivel 11 &8· &e216 slots &8· &b8 mejoras &8· &d5 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fFragmento de Eco &e%checkitem_amount_mat:ECHO_SHARD%&7/&e4'
@@ -629,7 +629,7 @@ items:
     slot: 20
     display_name: '&5&lMochila de Ender'
     lore:
-      - '&7Tier 12 &8· &e243 slots &8· &b8 mejoras &8· &d6 páginas'
+      - '&7Nivel 12 &8· &e243 slots &8· &b8 mejoras &8· &d6 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fOjo de Ender &e%checkitem_amount_mat:ENDER_EYE%&7/&e4'
@@ -684,13 +684,13 @@ items:
     slot: 21
     display_name: '&5&lMochila de Dragón'
     lore:
-      - '&7Tier 13 &8· &e270 slots &8· &b9 mejoras &8· &d6 páginas'
+      - '&7Nivel 13 &8· &e270 slots &8· &b9 mejoras &8· &d6 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fAliento de Dragón &e%checkitem_amount_mat:DRAGON_BREATH%&7/&e4'
       - '&8» &fCabeza de Dragón &e%checkitem_amount_mat:DRAGON_HEAD%&7/&e1'
       - '&8» &fCristal del End &e%checkitem_amount_mat:END_CRYSTAL%&7/&e2'
-      - '&8» &fÉlitros &e%checkitem_amount_mat:ELYTRA%&7/&e1'
+      - '&8» &fElytra &e%checkitem_amount_mat:ELYTRA%&7/&e1'
       - '&8» &fMochila de Ender &e%checkitem_amount_namecontains:Ender Backpack%&7/&e1'
       - ''
       - '&c⚠ &7Vacia la mochila antes del upgrade'
@@ -720,12 +720,12 @@ items:
           deny_commands:
             - '[message] &cFaltan Cristales del End &8(&e%checkitem_amount_mat:END_CRYSTAL%&8/&e2&8)'
             - '[sound] ENTITY_VILLAGER_NO'
-        elitros:
+        elytra:
           type: has item
           material: ELYTRA
           amount: 1
           deny_commands:
-            - '[message] &cFaltan Élitros'
+            - '[message] &cFalta Elytra'
             - '[sound] ENTITY_VILLAGER_NO'
         mochila_ender:
           type: javascript
@@ -757,7 +757,7 @@ items:
     slot: 22
     display_name: '&f&lMochila de Faro'
     lore:
-      - '&7Tier 14 &8· &e324 slots &8· &b9 mejoras &8· &d8 páginas'
+      - '&7Nivel 14 &8· &e324 slots &8· &b9 mejoras &8· &d8 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fObsidiana &e%checkitem_amount_mat:OBSIDIAN%&7/&e4'
@@ -821,7 +821,7 @@ items:
     slot: 23
     display_name: '&6&l&lMochila Ancestral'
     lore:
-      - '&7Tier 15 &8· &e378 slots &8· &b9 mejoras &8· &d9 páginas'
+      - '&7Nivel 15 &8· &e378 slots &8· &b9 mejoras &8· &d9 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fEscombros Ancestrales &e%checkitem_amount_mat:ANCIENT_DEBRIS%&7/&e8'
@@ -867,7 +867,7 @@ items:
     slot: 24
     display_name: '&6&lMochila Maestra'
     lore:
-      - '&7Tier 16 &8· &e432 slots &8· &b9 mejoras &8· &d10 páginas'
+      - '&7Nivel 16 &8· &e432 slots &8· &b9 mejoras &8· &d10 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e6'
@@ -922,7 +922,7 @@ items:
     slot: 25
     display_name: '&c&lMochila Suprema'
     lore:
-      - '&7Tier 17 &8· &e486 slots &8· &b9 mejoras &8· &d11 páginas'
+      - '&7Nivel 17 &8· &e486 slots &8· &b9 mejoras &8· &d11 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fCristal del End &e%checkitem_amount_mat:END_CRYSTAL%&7/&e6'
@@ -977,7 +977,7 @@ items:
     slot: 26
     display_name: '&d&lMochila Mítica'
     lore:
-      - '&7Tier 18 &8· &e540 slots &8· &b9 mejoras &8· &d12 páginas'
+      - '&7Nivel 18 &8· &e540 slots &8· &b9 mejoras &8· &d12 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fTótem de la Inmortalidad &e%checkitem_amount_mat:TOTEM_OF_UNDYING%&7/&e8'
@@ -1023,7 +1023,7 @@ items:
     slot: 30
     display_name: '&b&lMochila Divina'
     lore:
-      - '&7Tier 19 &8· &e594 slots &8· &b9 mejoras &8· &d14 páginas'
+      - '&7Nivel 19 &8· &e594 slots &8· &b9 mejoras &8· &d14 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fEstrella de Inframundo &e%checkitem_amount_mat:NETHER_STAR%&7/&e4'
@@ -1078,12 +1078,11 @@ items:
     slot: 31
     display_name: '&6&lMochila Infinita'
     lore:
-      - '&7Tier 20 &8· &e648 slots &8· &b9 mejoras &8· &d15 páginas'
+      - '&7Nivel 20 &8· &e648 slots &8· &b9 mejoras &8· &d15 páginas'
       - ''
       - '&6Necesitas'
       - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e4'
-      - '&8» &fEstrella de Inframundo &e%checkitem_amount_mat:NETHER_STAR%&7/&e2'
-      - '&8» &fHuevo de Dragón &e%checkitem_amount_mat:DRAGON_EGG%&7/&e2'
+      - '&8» &fEstrella de Inframundo &e%checkitem_amount_mat:NETHER_STAR%&7/&e4'
       - '&8» &fMochila Divina &e%checkitem_amount_namecontains:Divine Backpack%&7/&e1'
       - ''
       - '&c⚠ &7Vacia la mochila antes del upgrade'
@@ -1102,16 +1101,9 @@ items:
         estrella:
           type: has item
           material: NETHER_STAR
-          amount: 2
+          amount: 4
           deny_commands:
-            - '[message] &cFaltan Estrellas del Nether &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e2&8)'
-            - '[sound] ENTITY_VILLAGER_NO'
-        huevo:
-          type: has item
-          material: DRAGON_EGG
-          amount: 2
-          deny_commands:
-            - '[message] &cFaltan Huevos de Dragón &8(&e%checkitem_amount_mat:DRAGON_EGG%&8/&e2&8)'
+            - '[message] &cFaltan Estrellas del Nether &8(&e%checkitem_amount_mat:NETHER_STAR%&8/&e4&8)'
             - '[sound] ENTITY_VILLAGER_NO'
         mochila_divina:
           type: javascript
@@ -1123,8 +1115,7 @@ items:
         - '[sound] ENTITY_VILLAGER_NO'
     left_click_commands:
       - '[console] minecraft:clear %player_name% netherite_block 4'
-      - '[console] minecraft:clear %player_name% nether_star 2'
-      - '[console] minecraft:clear %player_name% dragon_egg 2'
+      - '[console] minecraft:clear %player_name% nether_star 4'
       - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"divine_backpack"}}] 1'
       - '[player] cp give infinity_backpack %player_name% 1'
       - '[message] &aObtuviste la &6&lMochila Infinita&a.'
@@ -1142,7 +1133,7 @@ items:
     slot: 32
     display_name: '&6&l&lMochila Definitiva'
     lore:
-      - '&7Tier 21 &8· &e765 slots &8· &b9 mejoras &8· &d17 páginas'
+      - '&7Nivel 21 &8· &e765 slots &8· &b9 mejoras &8· &d17 páginas'
       - '&7La mochila más grande del servidor'
       - ''
       - '&6Necesitas'
@@ -1153,7 +1144,7 @@ items:
       - '&8» &fCaja Shulker &e%checkitem_amount_mat:SHULKER_BOX%&7/&e1'
       - '&8» &fTótem de la Inmortalidad &e%checkitem_amount_mat:TOTEM_OF_UNDYING%&7/&e1'
       - '&8» &fFaro &e%checkitem_amount_mat:BEACON%&7/&e1'
-      - '&8» &fHuevo de Dragón &e%checkitem_amount_mat:DRAGON_EGG%&7/&e1'
+      - '&8» &fElytra &e%checkitem_amount_mat:ELYTRA%&7/&e1'
       - '&8» &fMochila Infinita &e%checkitem_amount_namecontains:Infinity Backpack%&7/&e1'
       - ''
       - '&c⚠ &7Vacia la mochila antes del upgrade'
@@ -1211,12 +1202,12 @@ items:
           deny_commands:
             - '[message] &cFalta el Faro'
             - '[sound] ENTITY_VILLAGER_NO'
-        huevo:
+        elytra:
           type: has item
-          material: DRAGON_EGG
+          material: ELYTRA
           amount: 1
           deny_commands:
-            - '[message] &cFalta el Huevo de Dragón'
+            - '[message] &cFalta Elytra'
             - '[sound] ENTITY_VILLAGER_NO'
         mochila_infinita:
           type: javascript
@@ -1234,10 +1225,119 @@ items:
       - '[console] minecraft:clear %player_name% shulker_box 1'
       - '[console] minecraft:clear %player_name% totem_of_undying 1'
       - '[console] minecraft:clear %player_name% beacon 1'
-      - '[console] minecraft:clear %player_name% dragon_egg 1'
+      - '[console] minecraft:clear %player_name% elytra 1'
       - '[console] minecraft:clear %player_name% *[minecraft:custom_data~{PublicBukkitValues:{"curiospaper:curios_custom_id":"infinity_backpack"}}] 1'
       - '[player] cp give ultimate_backpack %player_name% 1'
       - '[message] &aObtuviste la &6&l&lMochila Definitiva&a. &7¡La mejor mochila del servidor!'
+      - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
+      - '[refresh]'
+
+  # ====================
+  # MOCHILA LEGENDARIA
+  # ====================
+  legendary_backpack:
+    material: CARROT_ON_A_STICK
+    item_model: probablybackpacks:backpack/normal/netherite/yellow
+    model_data_component:
+      floats: [101606]
+    slot: 36
+    display_name: '&6&lMochila Legendaria'
+    lore:
+      - '&6✦ &eMochila Única &6✦'
+      - '&e1080 espacios &8· &b9 mejoras &8· &d24 páginas'
+      - '&7Forjada con las reliquias más raras del mundo'
+      - ''
+      - '&6Necesitas'
+      - '&8» &fHuevo de Dragón &e%checkitem_amount_mat:DRAGON_EGG%&7/&e1'
+      - '&8» &fBloque de Netherita &e%checkitem_amount_mat:NETHERITE_BLOCK%&7/&e1'
+      - '&8» &fNúcleo Pesado &e%checkitem_amount_mat:HEAVY_CORE%&7/&e1'
+      - '&8» &fEstrella del Nether &e%checkitem_amount_mat:NETHER_STAR%&7/&e1'
+      - '&8» &fConducto &e%checkitem_amount_mat:CONDUIT%&7/&e1'
+      - '&8» &fCristal del End &e%checkitem_amount_mat:END_CRYSTAL%&7/&e1'
+      - '&8» &fAliento de Dragón &e%checkitem_amount_mat:DRAGON_BREATH%&7/&e1'
+      - '&8» &fManzana Dorada Encantada &e%checkitem_amount_mat:ENCHANTED_GOLDEN_APPLE%&7/&e1'
+      - '&8» &fFaro &e%checkitem_amount_mat:BEACON%&7/&e1'
+      - ''
+      - '&aHaz clic para fabricar'
+    left_click_requirement:
+      requirements:
+        dragon_egg:
+          type: has item
+          material: DRAGON_EGG
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta el Huevo de Dragón'
+            - '[sound] ENTITY_VILLAGER_NO'
+        netherite:
+          type: has item
+          material: NETHERITE_BLOCK
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta el Bloque de Netherita'
+            - '[sound] ENTITY_VILLAGER_NO'
+        heavy_core:
+          type: has item
+          material: HEAVY_CORE
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta el Núcleo Pesado'
+            - '[sound] ENTITY_VILLAGER_NO'
+        star:
+          type: has item
+          material: NETHER_STAR
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta la Estrella del Nether'
+            - '[sound] ENTITY_VILLAGER_NO'
+        conduit:
+          type: has item
+          material: CONDUIT
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta el Conducto'
+            - '[sound] ENTITY_VILLAGER_NO'
+        crystal:
+          type: has item
+          material: END_CRYSTAL
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta el Cristal del End'
+            - '[sound] ENTITY_VILLAGER_NO'
+        breath:
+          type: has item
+          material: DRAGON_BREATH
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta el Aliento de Dragón'
+            - '[sound] ENTITY_VILLAGER_NO'
+        gapple:
+          type: has item
+          material: ENCHANTED_GOLDEN_APPLE
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta la Manzana Dorada Encantada'
+            - '[sound] ENTITY_VILLAGER_NO'
+        beacon:
+          type: has item
+          material: BEACON
+          amount: 1
+          deny_commands:
+            - '[message] &cTe falta el Faro'
+            - '[sound] ENTITY_VILLAGER_NO'
+      deny_commands:
+        - '[sound] ENTITY_VILLAGER_NO'
+    left_click_commands:
+      - '[console] minecraft:clear %player_name% dragon_egg 1'
+      - '[console] minecraft:clear %player_name% netherite_block 1'
+      - '[console] minecraft:clear %player_name% heavy_core 1'
+      - '[console] minecraft:clear %player_name% nether_star 1'
+      - '[console] minecraft:clear %player_name% conduit 1'
+      - '[console] minecraft:clear %player_name% end_crystal 1'
+      - '[console] minecraft:clear %player_name% dragon_breath 1'
+      - '[console] minecraft:clear %player_name% enchanted_golden_apple 1'
+      - '[console] minecraft:clear %player_name% beacon 1'
+      - '[player] cp give legendary_backpack %player_name% 1'
+      - '[message] &a¡Has obtenido la &6&lLegendary Backpack&a! &7La mochila más legendaria del servidor.'
       - '[sound] UI_TOAST_CHALLENGE_COMPLETE'
       - '[refresh]'
 
@@ -1278,7 +1378,7 @@ items:
       - '&8» &fFragmento de Eco: &e%checkitem_amount_mat:ECHO_SHARD%'
       - '&8» &fOjo de Ender: &e%checkitem_amount_mat:ENDER_EYE%'
       - '&8» &fAliento de Dragón: &e%checkitem_amount_mat:DRAGON_BREATH%'
-      - '&8» &fÉlitros(Elytra): &e%checkitem_amount_mat:ELYTRA%'
+      - '&8» &fElytra: &e%checkitem_amount_mat:ELYTRA%'
       - '&8» &fObsidiana: &e%checkitem_amount_mat:OBSIDIAN%'
       - '&8» &fFaro: &e%checkitem_amount_mat:BEACON%'
       - '&8» &fEstrella de Inframundo: &e%checkitem_amount_mat:NETHER_STAR%'
